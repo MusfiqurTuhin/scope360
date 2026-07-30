@@ -1,7 +1,7 @@
 # Setup — Scope360 Website
 
 ## Stack
-- Next.js 15 (App Router) — React 19, TypeScript strict
+- Next.js 16 (App Router) — React 19, TypeScript strict
 - Tailwind CSS v4 (CSS-first `@theme` config, no `tailwind.config.js`)
 - Deployment target: Vercel (zero-config; no custom server, no non-serverless dependencies)
 

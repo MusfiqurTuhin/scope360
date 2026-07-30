@@ -1,5 +1,11 @@
 # Changelog
 
+## [2026-07-31] — Next.js 16 upgrade
+
+- Upgraded Next.js 15.5.4 → 16.2.12 and React 19.1.1 → 19.2.8. Vercel refused to deploy the 15.5.4 build with `Vulnerable version of Next.js detected`; the build itself had succeeded.
+- No application code changes were required. `tsconfig.json` `jsx` was set to `react-jsx` automatically by the Next 16 build.
+- Re-verified: production build clean, all six pages screenshot-identical at 1440px and 390px, zero horizontal overflow, no console or page errors, contact API validation paths unchanged.
+
 ## [2026-07-31] — Initial build
 
 - Scaffolded the Scope360 company website: Next.js 15 App Router, React 19, TypeScript strict mode, Tailwind CSS v4.
