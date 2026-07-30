@@ -72,8 +72,9 @@ export default function IndustriesPage() {
         <SectionHeading
           eyebrow="Applications"
           title="What we usually get asked to do"
+          layout="split"
         />
-        <div className="mt-14 grid gap-px overflow-hidden rounded-2xl border border-white/10 bg-white/8 md:grid-cols-2 lg:grid-cols-3">
+        <div className="mt-10 grid gap-px overflow-hidden rounded-2xl border border-white/10 bg-white/8 md:grid-cols-2 lg:grid-cols-3">
           {applications.map((item) => (
             <div key={item.title} className="bg-ink-950 p-8">
               <h3 className="text-base font-semibold text-white">
@@ -88,7 +89,7 @@ export default function IndustriesPage() {
       </Section>
 
       <Section>
-        <div className="flex flex-col items-start gap-8 rounded-2xl border border-white/10 bg-ink-900/60 p-10 md:flex-row md:items-center md:justify-between">
+        <div className="flex flex-col items-start gap-6 rounded-2xl border border-white/10 bg-ink-900/60 p-8 md:flex-row md:items-center md:justify-between">
           <div>
             <h2 className="font-display text-3xl leading-tight text-ink-100">
               Every engagement draws on all three pillars.

@@ -52,8 +52,9 @@ export default function ApproachPage() {
           eyebrow="How we work together"
           title="Four ways to work with us"
           lede="From a single piece of scoping work through to a team that stays with you for years."
+          layout="split"
         />
-        <div className="mt-14 grid gap-px overflow-hidden rounded-2xl border border-white/10 bg-white/8 sm:grid-cols-2 lg:grid-cols-4">
+        <div className="mt-10 grid gap-px overflow-hidden rounded-2xl border border-white/10 bg-white/8 sm:grid-cols-2 lg:grid-cols-4">
           {engagementModels.map((model) => (
             <div key={model.title} className="bg-ink-950 p-8">
               <h3 className="text-base font-semibold text-white">
@@ -72,7 +73,7 @@ export default function ApproachPage() {
           eyebrow="Operating principles"
           title="What people come to us for"
         />
-        <div className="mt-14 grid gap-6 md:grid-cols-2">
+        <div className="mt-10 grid gap-6 md:grid-cols-2">
           {differentiators.map((item) => (
             <Card key={item.title}>
               <h3 className="text-lg font-semibold text-white">{item.title}</h3>
@@ -85,7 +86,7 @@ export default function ApproachPage() {
       </Section>
 
       <Section>
-        <div className="grid gap-12 lg:grid-cols-2 lg:items-start">
+        <div className="grid gap-10 lg:grid-cols-2 lg:items-start">
           <SectionHeading
             eyebrow="Governance & compliance"
             title="An uncompromising, compliance-first approach"

@@ -1,5 +1,16 @@
 # Changelog
 
+## [2026-07-31] — Above-the-fold fix, density pass, full responsive sweep
+
+- **Fixed the hero call-to-action falling below the fold.** At a 1470x790 viewport the buttons sat 144px off-screen and the supporting paragraph was cut. The display type scale was far too large.
+- Reduced the display scale from `clamp(2.8rem, 7.4vw, 6rem)` to `clamp(2.3rem, 5.3vw, 4.4rem)`, with h1 and h2 brought down proportionally.
+- Hero vertical rhythm is now viewport-height aware (`clamp(1.75rem, 4.5vh, 4.5rem)`) rather than fixed, so short screens compress instead of pushing content off-screen. Added `max-height` breakpoints at 720px, 600px and 480px that shrink the display scale further.
+- On landscape phones the four forced headline lines now reflow inline, recovering enough height for the call to action.
+- **Rebuilt the hero as two columns.** The right half was empty; the key figures now sit there, removing both the dead space and the tall blank band beneath the buttons.
+- Added a `split` heading layout that places the supporting line beside the title on wide screens, so full-width section headings no longer leave their right half empty.
+- Tightened spacing throughout: section padding 20/28 to 14/20, card padding 7 to 6, grid gaps and heading gaps reduced. Home page height dropped from ~5600px to 4285px with no content removed.
+- Verified: **60 page/viewport combinations** (6 pages x 10 viewports from 360x740 to 2560x1440) with zero horizontal overflow and no console errors. Both hero CTAs confirmed above the fold at 12 viewport sizes including 1280x700, 1366x650, 320x568 and 844x390 landscape.
+
 ## [2026-07-31] — Repositioning and artistic direction
 
 - **Repositioned the site away from a software-company voice.** The two source documents conflict; the site now follows the company deck (a full-service *execution* partner) rather than the premium-profile docx (a software/AI firm). Digital is one of three pillars, not the headline.

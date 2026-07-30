@@ -46,7 +46,7 @@ export default function AboutPage() {
       />
 
       <Section className="border-b border-white/5">
-        <div className="grid gap-12 lg:grid-cols-2">
+        <div className="grid gap-10 lg:grid-cols-2">
           <div className="rounded-2xl border border-white/10 bg-ink-900/60 p-9">
             <h2 className="text-xs font-semibold uppercase tracking-[0.2em] text-amber-brand">
               Our Vision
@@ -75,8 +75,9 @@ export default function AboutPage() {
           eyebrow="Operating strength"
           title="Built around what we can do, not job titles"
           lede="One team covering site work, building, buying, technology, and looking after the client — all under the same roof."
+          layout="split"
         />
-        <div className="mt-14 grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+        <div className="mt-10 grid gap-6 md:grid-cols-2 lg:grid-cols-3">
           {capabilities.map((item) => (
             <Card key={item.title}>
               <h3 className="text-base font-semibold text-white">
@@ -92,7 +93,7 @@ export default function AboutPage() {
 
       <Section className="border-b border-white/5">
         <SectionHeading eyebrow="What sets us apart" title="What you can hold us to" />
-        <div className="mt-14 grid gap-px overflow-hidden rounded-2xl border border-white/10 bg-white/8 sm:grid-cols-2 lg:grid-cols-4">
+        <div className="mt-10 grid gap-px overflow-hidden rounded-2xl border border-white/10 bg-white/8 sm:grid-cols-2 lg:grid-cols-4">
           {differentiators.map((item) => (
             <div key={item.title} className="bg-ink-950 p-8">
               <h3 className="text-base font-semibold text-white">
@@ -107,7 +108,7 @@ export default function AboutPage() {
       </Section>
 
       <Section>
-        <div className="flex flex-col items-start gap-8 rounded-2xl border border-white/10 bg-ink-900/60 p-10 md:flex-row md:items-center md:justify-between">
+        <div className="flex flex-col items-start gap-6 rounded-2xl border border-white/10 bg-ink-900/60 p-8 md:flex-row md:items-center md:justify-between">
           <div>
             <h2 className="font-display text-3xl leading-tight text-ink-100">
               {company.tagline}

@@ -17,9 +17,9 @@
   --font-sans: var(--font-inter), ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif;
   --font-display: var(--font-display-serif), ui-serif, Georgia, "Times New Roman", serif;
 
-  --text-display: clamp(2.8rem, 7.4vw, 6rem);
-  --text-h1: clamp(2.2rem, 5.2vw, 3.9rem);
-  --text-h2: clamp(1.7rem, 3.6vw, 2.7rem);
+  --text-display: clamp(2.3rem, 5.3vw, 4.4rem);
+  --text-h1: clamp(1.95rem, 4.1vw, 3.05rem);
+  --text-h2: clamp(1.5rem, 2.9vw, 2.15rem);
 
   --animate-rise: rise 0.7s cubic-bezier(0.22, 1, 0.36, 1) both;
   --animate-line: line-in 1.05s cubic-bezier(0.16, 1, 0.3, 1) both;
@@ -186,4 +186,39 @@ body {
   opacity: 1 !important;
   transform: none !important;
   filter: none !important;
+}
+
+/* Short viewports (small laptops, landscape phones): shrink the display scale so
+   the hero call-to-action stays above the fold rather than being pushed off. */
+@media (max-height: 720px) {
+  :root {
+    --text-display: clamp(1.9rem, 4.2vw, 3rem);
+    --text-h1: clamp(1.7rem, 3.4vw, 2.4rem);
+  }
+}
+
+@media (max-height: 600px) {
+  :root {
+    --text-display: clamp(1.65rem, 3.8vw, 2.4rem);
+  }
+}
+
+/* Landscape phones: very little vertical room. Compress hard so the hero still
+   leads with a call to action rather than a wall of headline. */
+@media (max-height: 480px) {
+  :root {
+    --text-display: clamp(1.4rem, 3vw, 1.9rem);
+  }
+}
+
+/* On landscape phones the four forced headline lines waste the little height
+   available. Let them reflow inline so the text wraps to fit the wide viewport. */
+@media (max-height: 480px) {
+  .line-mask {
+    display: inline;
+    padding-bottom: 0;
+  }
+  .line-mask > span {
+    display: inline;
+  }
 }

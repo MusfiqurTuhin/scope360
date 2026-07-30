@@ -16,14 +16,14 @@ export function PageHero({
         aria-hidden
         className="animate-orb-a pointer-events-none absolute -right-32 -top-48 h-[34rem] w-[34rem] rounded-full bg-radial from-amber-brand/14 to-transparent blur-2xl"
       />
-      <div className="container-page relative py-20 md:py-28">
+      <div className="container-page relative py-12 md:py-16">
         <div className="max-w-3xl">
           <div className="animate-rise">
             <Eyebrow>
               <ScrambleText text={eyebrow} />
             </Eyebrow>
           </div>
-          <h1 className="font-display mt-7 text-(length:--text-h1) leading-[1.06] text-ink-100 text-balance">
+          <h1 className="font-display mt-5 text-(length:--text-h1) leading-[1.06] text-ink-100 text-balance">
             <span className="line-mask">
               <span className="animate-line block" style={{ animationDelay: "140ms" }}>
                 {title}
@@ -31,7 +31,7 @@ export function PageHero({
             </span>
           </h1>
           <Reveal delay={420}>
-            <p className="mt-6 text-lg leading-relaxed text-ink-200/72">{lede}</p>
+            <p className="mt-5 max-w-2xl text-base leading-relaxed text-ink-200/72 md:text-lg">{lede}</p>
           </Reveal>
         </div>
       </div>

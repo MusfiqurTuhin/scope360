@@ -61,63 +61,68 @@ function Hero() {
       />
       <div aria-hidden className="grain pointer-events-none absolute inset-0 opacity-40" />
 
-      <div className="container-page relative py-24 md:py-36">
-        <div className="max-w-4xl">
-          <div className="animate-rise">
-            <Eyebrow>
-              <ScrambleText text={company.tagline} />
-            </Eyebrow>
+      <div className="container-page relative py-[clamp(1.75rem,4.5vh,4.5rem)]">
+        <div className="grid items-center gap-10 lg:grid-cols-[1.1fr_0.9fr] lg:gap-14">
+          <div>
+            <div className="animate-rise">
+              <Eyebrow>
+                <ScrambleText text={company.tagline} />
+              </Eyebrow>
+            </div>
+
+            <h1 className="font-display mt-5 text-(length:--text-display) leading-[1.02] text-ink-100 text-balance">
+              {heroLines.map((line, index) => (
+                <span key={line.text} className="line-mask">
+                  <span
+                    className={`animate-line block ${line.accent ? "text-sheen" : ""}`}
+                    style={{ animationDelay: `${160 + index * 110}ms` }}
+                  >
+                    {line.text}{" "}
+                  </span>
+                </span>
+              ))}
+            </h1>
+
+            <Reveal delay={620}>
+              <p className="mt-4 max-w-xl text-sm leading-relaxed text-ink-200/75 sm:mt-6 sm:text-base md:text-lg">
+                We take on big, complicated projects and see them all the way
+                through — from the first conversation to the day-to-day running
+                of it, long after everyone else has gone home.
+              </p>
+            </Reveal>
+
+            <Reveal delay={740}>
+              <div className="mt-5 flex flex-col gap-3 sm:mt-7 sm:flex-row">
+                <MagneticButton href="/contact">Start a project</MagneticButton>
+                <MagneticButton href="/capabilities" variant="ghost">
+                  Explore capabilities
+                </MagneticButton>
+              </div>
+            </Reveal>
           </div>
 
-          <h1 className="font-display mt-8 text-(length:--text-display) leading-[1.02] text-ink-100 text-balance">
-            {heroLines.map((line, index) => (
-              <span key={line.text} className="line-mask">
-                <span
-                  className={`animate-line block ${line.accent ? "text-sheen" : ""}`}
-                  style={{ animationDelay: `${160 + index * 110}ms` }}
+          <div className="grid gap-px overflow-hidden rounded-2xl border border-white/10 bg-white/8 sm:grid-cols-2 lg:grid-cols-1">
+            <Stagger start={860} step={110}>
+              {[
+                { value: <>360&deg;</>, label: "Physical, digital, and operational scope under one contract" },
+                { value: <CountUp to={3} prefix="0" />, label: "Integrated delivery pillars, not disconnected vendors" },
+                { value: <>24/7</>, label: "Operational monitoring and dedicated helpdesk support" },
+                { value: <>M&amp;E</>, label: "Analytics frameworks embedded in every engagement" },
+              ].map((stat, i) => (
+                <div
+                  key={i}
+                  className="flex h-full items-baseline gap-4 bg-ink-950/80 px-5 py-4 transition-colors duration-500 hover:bg-ink-900"
                 >
-                  {line.text}
-                </span>
-              </span>
-            ))}
-          </h1>
-
-          <Reveal delay={620}>
-            <p className="mt-8 max-w-2xl text-lg leading-relaxed text-ink-200/75 md:text-xl">
-              We take on big, complicated projects and see them all the way
-              through — from the first conversation to the day-to-day running
-              of it, long after everyone else has gone home.
-            </p>
-          </Reveal>
-
-          <Reveal delay={740}>
-            <div className="mt-10 flex flex-col gap-3 sm:flex-row">
-              <MagneticButton href="/contact">Start a project</MagneticButton>
-              <MagneticButton href="/capabilities" variant="ghost">
-                Explore capabilities
-              </MagneticButton>
-            </div>
-          </Reveal>
-        </div>
-
-        <div className="mt-20 grid gap-8 sm:grid-cols-2 lg:grid-cols-4">
-          <Stagger start={860} step={110}>
-            {[
-              { value: <>360&deg;</>, label: "Physical, digital, and operational scope under one contract" },
-              { value: <CountUp to={3} prefix="0" />, label: "Integrated delivery pillars, not disconnected vendors" },
-              { value: <>24/7</>, label: "Operational monitoring and dedicated helpdesk support" },
-              { value: <>M&amp;E</>, label: "Analytics frameworks embedded in every engagement" },
-            ].map((stat, i) => (
-              <div key={i} className="border-l border-white/10 pl-5">
-                <p className="text-3xl font-semibold tracking-tight text-white md:text-4xl">
-                  {stat.value}
-                </p>
-                <p className="mt-2 text-sm leading-snug text-ink-200/60">
-                  {stat.label}
-                </p>
-              </div>
-            ))}
-          </Stagger>
+                  <p className="font-display shrink-0 text-2xl text-amber-brand md:text-3xl">
+                    {stat.value}
+                  </p>
+                  <p className="text-xs leading-snug text-ink-200/60 sm:text-sm">
+                    {stat.label}
+                  </p>
+                </div>
+              ))}
+            </Stagger>
+          </div>
         </div>
       </div>
     </section>
@@ -132,10 +137,11 @@ function PillarsSection() {
           eyebrow="Core capabilities"
           title="The three 360° pillars"
           lede="Between them they cover the whole job — from the building work and the build-out, to the systems that run it and the people who look after it."
+          layout="split"
         />
       </Reveal>
 
-      <div className="mt-14 grid gap-6 lg:grid-cols-3">
+      <div className="mt-10 grid gap-5 lg:grid-cols-3">
         <Stagger step={130} variant="blur">
           {pillars.map((pillar) => (
             <SpotlightCard key={pillar.slug} className="flex h-full flex-col">
@@ -181,7 +187,7 @@ function PillarsSection() {
 function DifferentiatorsSection() {
   return (
     <Section className="border-t border-white/5 bg-ink-900/40">
-      <div className="grid gap-14 lg:grid-cols-[0.9fr_1.1fr]">
+      <div className="grid gap-10 lg:grid-cols-[0.9fr_1.1fr]">
         <Reveal variant="left">
           <SectionHeading
             eyebrow="Why Scope360"
@@ -219,9 +225,10 @@ function MethodSection() {
           eyebrow="Methodology"
           title="A repeatable delivery system"
           lede="Every project runs the same four steps, so you always know where things stand."
+          layout="split"
         />
       </Reveal>
-      <ol className="mt-14 grid gap-px overflow-hidden rounded-2xl border border-white/10 bg-white/8 md:grid-cols-2 lg:grid-cols-4">
+      <ol className="mt-10 grid gap-px overflow-hidden rounded-2xl border border-white/10 bg-white/8 md:grid-cols-2 lg:grid-cols-4">
         {methodology.map((stage, index) => (
           <Reveal as="li" key={stage.step} delay={index * 120} variant="scale">
             <div className="group h-full bg-ink-950 p-8 transition-colors duration-500 hover:bg-ink-900">
@@ -251,7 +258,7 @@ function EngagementsSection() {
           title="The kind of work we take on"
         />
       </Reveal>
-      <div className="mt-14 grid gap-6 md:grid-cols-3">
+      <div className="mt-10 grid gap-5 md:grid-cols-3">
         <Stagger step={130}>
           {engagements.map((item) => (
             <SpotlightCard key={item.sector} className="h-full">
@@ -280,7 +287,7 @@ function EngagementsSection() {
 function GovernanceSection() {
   return (
     <Section className="border-t border-white/5">
-      <div className="grid gap-12 lg:grid-cols-2 lg:items-center">
+      <div className="grid gap-10 lg:grid-cols-2 lg:items-center">
         <Reveal variant="left">
           <SectionHeading
             eyebrow="Governance"
@@ -318,9 +325,9 @@ function CtaSection() {
         aria-hidden
         className="animate-orb-b pointer-events-none absolute inset-x-0 bottom-0 h-96 bg-radial from-amber-brand/12 to-transparent blur-2xl"
       />
-      <div className="container-page relative py-24 text-center md:py-32">
+      <div className="container-page relative py-16 text-center md:py-20">
         <Reveal variant="scale">
-          <div className="relative mx-auto mb-10 h-14 w-14">
+          <div className="relative mx-auto mb-7 h-12 w-12">
             <span
               aria-hidden
               className="animate-pulse-ring absolute inset-0 rounded-full border border-amber-brand/50"

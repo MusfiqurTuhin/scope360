@@ -20,24 +20,43 @@ export function SectionHeading({
   title,
   lede,
   align = "left",
+  layout = "stacked",
 }: {
   eyebrow?: string;
   title: ReactNode;
   lede?: string;
   align?: "left" | "center";
+  /**
+   * "split" sets the supporting line beside the title on wide screens. Used
+   * wherever the heading spans the full width, so the right half is not left empty.
+   */
+  layout?: "stacked" | "split";
 }) {
   const centered = align === "center";
+  const split = layout === "split" && !centered && Boolean(lede);
+
   return (
     <Reveal>
       <div
-        className={`flex flex-col gap-5 ${centered ? "items-center text-center" : "items-start"}`}
+        className={
+          split
+            ? "grid gap-5 lg:grid-cols-[1.05fr_0.95fr] lg:items-end lg:gap-14"
+            : `flex flex-col gap-4 ${centered ? "items-center text-center" : "items-start"}`
+        }
       >
-        {eyebrow ? <Eyebrow>{eyebrow}</Eyebrow> : null}
-        <h2 className="font-display max-w-3xl text-(length:--text-h2) leading-[1.12] text-ink-100 text-balance">
-          {title}
-        </h2>
-        {lede ? (
-          <p className="max-w-2xl text-base leading-relaxed text-ink-200/75 md:text-lg">
+        <div className={`flex flex-col gap-4 ${centered ? "items-center text-center" : "items-start"}`}>
+          {eyebrow ? <Eyebrow>{eyebrow}</Eyebrow> : null}
+          <h2 className="font-display max-w-3xl text-(length:--text-h2) leading-[1.12] text-ink-100 text-balance">
+            {title}
+          </h2>
+          {!split && lede ? (
+            <p className="max-w-2xl text-base leading-relaxed text-ink-200/75 md:text-lg">
+              {lede}
+            </p>
+          ) : null}
+        </div>
+        {split && lede ? (
+          <p className="max-w-2xl text-base leading-relaxed text-ink-200/75 lg:pb-1">
             {lede}
           </p>
         ) : null}
@@ -56,7 +75,7 @@ export function Section({
   className?: string;
 }) {
   return (
-    <section id={id} className={`py-20 md:py-28 ${className}`}>
+    <section id={id} className={`py-14 md:py-20 ${className}`}>
       <div className="container-page">{children}</div>
     </section>
   );

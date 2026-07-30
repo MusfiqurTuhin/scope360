@@ -24,7 +24,7 @@ export default function CapabilitiesPage() {
           id={pillar.slug}
           className={`scroll-mt-24 border-b border-white/5 ${i % 2 === 1 ? "bg-ink-900/40" : ""}`}
         >
-          <div className="grid gap-12 lg:grid-cols-[0.85fr_1.15fr]">
+          <div className="grid gap-10 lg:grid-cols-[0.85fr_1.15fr]">
             <div>
               <SectionHeading
                 eyebrow={`Pillar ${pillar.index}`}
@@ -58,8 +58,9 @@ export default function CapabilitiesPage() {
           eyebrow="Delivery capability"
           title="What we can put on the ground"
           lede="The mix changes from job to job. What we are able to bring does not."
+          layout="split"
         />
-        <div className="mt-14 grid gap-px overflow-hidden rounded-2xl border border-white/10 bg-white/8 md:grid-cols-2 lg:grid-cols-4">
+        <div className="mt-10 grid gap-px overflow-hidden rounded-2xl border border-white/10 bg-white/8 md:grid-cols-2 lg:grid-cols-4">
           {capabilityStack.map((group) => (
             <div key={group.group} className="bg-ink-950 p-8">
               <h3 className="text-sm font-semibold uppercase tracking-[0.14em] text-amber-brand">
@@ -81,7 +82,7 @@ export default function CapabilitiesPage() {
       </Section>
 
       <Section>
-        <div className="flex flex-col items-start gap-8 rounded-2xl border border-white/10 bg-ink-900/60 p-10 md:flex-row md:items-center md:justify-between">
+        <div className="flex flex-col items-start gap-6 rounded-2xl border border-white/10 bg-ink-900/60 p-8 md:flex-row md:items-center md:justify-between">
           <div>
             <h2 className="font-display text-3xl leading-tight text-ink-100">
               Not sure which pillar you need?

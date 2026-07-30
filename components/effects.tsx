@@ -123,7 +123,7 @@ export function Marquee({ items }: { items: string[] }) {
   return (
     <div
       aria-hidden
-      className="relative flex overflow-hidden border-y border-white/8 py-5 [mask-image:linear-gradient(to_right,transparent,#000_12%,#000_88%,transparent)]"
+      className="relative flex overflow-hidden border-y border-white/8 py-4 [mask-image:linear-gradient(to_right,transparent,#000_12%,#000_88%,transparent)]"
     >
       <div className="animate-marquee flex shrink-0 items-center gap-10 pr-10">
         {track.map((item, index) => (
@@ -162,7 +162,7 @@ export function SpotlightCard({
     <div
       ref={ref}
       onPointerMove={onPointerMove}
-      className={`group relative overflow-hidden rounded-2xl border border-white/10 bg-ink-900/70 p-7 transition-[transform,border-color,background-color] duration-500 hover:-translate-y-1 hover:border-amber-brand/40 hover:bg-ink-800/60 ${className}`}
+      className={`group relative overflow-hidden rounded-2xl border border-white/10 bg-ink-900/70 p-6 transition-[transform,border-color,background-color] duration-500 hover:-translate-y-1 hover:border-amber-brand/40 hover:bg-ink-800/60 ${className}`}
     >
       <span
         aria-hidden

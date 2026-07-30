@@ -20,7 +20,7 @@ export default function ContactPage() {
       />
 
       <Section>
-        <div className="grid gap-14 lg:grid-cols-[1.15fr_0.85fr]">
+        <div className="grid gap-10 lg:grid-cols-[1.15fr_0.85fr]">
           <div className="rounded-2xl border border-white/10 bg-ink-900/50 p-8 md:p-10">
             <h2 className="font-display text-2xl text-ink-100">
               Tell us about it
