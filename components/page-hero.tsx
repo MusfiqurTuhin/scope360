@@ -23,7 +23,7 @@ export function PageHero({
               <ScrambleText text={eyebrow} />
             </Eyebrow>
           </div>
-          <h1 className="mt-7 text-(length:--text-h1) font-semibold leading-[1.03] tracking-tight text-white text-balance">
+          <h1 className="font-display mt-7 text-(length:--text-h1) leading-[1.06] text-ink-100 text-balance">
             <span className="line-mask">
               <span className="animate-line block" style={{ animationDelay: "140ms" }}>
                 {title}

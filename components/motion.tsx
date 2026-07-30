@@ -139,7 +139,9 @@ export function CountUp({
   duration?: number;
 }) {
   const ref = useRef<HTMLSpanElement | null>(null);
-  const [value, setValue] = useState(0);
+  // Starts at the final value so the server-rendered (and no-JS) output is
+  // correct; the client resets to zero only when it can actually animate.
+  const [value, setValue] = useState(to);
   const reduced = usePrefersReducedMotion();
 
   useEffect(() => {
@@ -154,6 +156,7 @@ export function CountUp({
       return;
     }
 
+    setValue(0);
     let frame = 0;
     let startedAt = 0;
 

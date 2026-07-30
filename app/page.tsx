@@ -47,9 +47,9 @@ export default function HomePage() {
 
 const heroLines = [
   { text: "One partner", accent: false },
-  { text: "for the build,", accent: false },
-  { text: "the platform, and", accent: false },
-  { text: "everything after.", accent: true },
+  { text: "from concept", accent: false },
+  { text: "to ground reality —", accent: false },
+  { text: "and everything after.", accent: true },
 ];
 
 function Hero() {
@@ -69,7 +69,7 @@ function Hero() {
             </Eyebrow>
           </div>
 
-          <h1 className="mt-8 text-(length:--text-display) font-semibold leading-[0.95] tracking-tight text-white text-balance">
+          <h1 className="font-display mt-8 text-(length:--text-display) leading-[1.02] text-ink-100 text-balance">
             {heroLines.map((line, index) => (
               <span key={line.text} className="line-mask">
                 <span
@@ -84,9 +84,9 @@ function Hero() {
 
           <Reveal delay={620}>
             <p className="mt-8 max-w-2xl text-lg leading-relaxed text-ink-200/75 md:text-xl">
-              Scope360 orchestrates complex initiatives from initial concept to
-              long-term operational viability — bridging rigorous field
-              experience, robust supply chains, and advanced technology.
+              We take on big, complicated projects and see them all the way
+              through — from the first conversation to the day-to-day running
+              of it, long after everyone else has gone home.
             </p>
           </Reveal>
 
@@ -131,7 +131,7 @@ function PillarsSection() {
         <SectionHeading
           eyebrow="Core capabilities"
           title="The three 360° pillars"
-          lede="Together they form a complete delivery architecture — capable of rapid mobilization and long-horizon enterprise programs alike."
+          lede="Between them they cover the whole job — from the building work and the build-out, to the systems that run it and the people who look after it."
         />
       </Reveal>
 
@@ -185,8 +185,8 @@ function DifferentiatorsSection() {
         <Reveal variant="left">
           <SectionHeading
             eyebrow="Why Scope360"
-            title="Accountability that does not fragment at the handover."
-            lede="Most programs fail in the seams between vendors. We remove the seams."
+            title="One team answerable for all of it."
+            lede="Most projects come undone in the gaps between suppliers. We do not leave gaps."
           />
         </Reveal>
         <Reveal variant="right" delay={140}>
@@ -218,7 +218,7 @@ function MethodSection() {
         <SectionHeading
           eyebrow="Methodology"
           title="A repeatable delivery system"
-          lede="Every engagement runs the same four-stage model, so scope, risk, and reporting stay legible from day one."
+          lede="Every project runs the same four steps, so you always know where things stand."
         />
       </Reveal>
       <ol className="mt-14 grid gap-px overflow-hidden rounded-2xl border border-white/10 bg-white/8 md:grid-cols-2 lg:grid-cols-4">
@@ -248,7 +248,7 @@ function EngagementsSection() {
       <Reveal>
         <SectionHeading
           eyebrow="Representative engagements"
-          title="Where the model is applied"
+          title="The kind of work we take on"
         />
       </Reveal>
       <div className="mt-14 grid gap-6 md:grid-cols-3">
@@ -332,12 +332,12 @@ function CtaSection() {
               360&deg;
             </span>
           </div>
-          <h2 className="mx-auto max-w-3xl text-(length:--text-h1) font-semibold leading-[1.05] tracking-tight text-white text-balance">
+          <h2 className="font-display mx-auto max-w-3xl text-(length:--text-h1) leading-[1.08] text-ink-100 text-balance">
             Ready to execute?
           </h2>
           <p className="mx-auto mt-6 max-w-xl text-lg text-ink-200/70">
-            Bring us the scope, the constraints, and the deadline. We will come
-            back with the architecture.
+            Tell us what you need, what is in the way, and when it has to be
+            done. We will come back with a plan.
           </p>
           <div className="mt-10 flex justify-center">
             <MagneticButton href="/contact">Talk to Scope360</MagneticButton>

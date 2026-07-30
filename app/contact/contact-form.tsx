@@ -42,7 +42,7 @@ export function ContactForm() {
 
       form.reset();
       setStatus("sent");
-      setMessage("Enquiry received. We respond within one business day.");
+      setMessage("Got it. We will come back to you within a working day.");
     } catch {
       setStatus("error");
       setMessage("Network error. Please retry or email us directly.");
@@ -96,10 +96,10 @@ export function ContactForm() {
         </label>
         <label className="grid gap-2">
           <span className="text-xs font-medium uppercase tracking-[0.14em] text-ink-200/60">
-            Area of interest
+            What is it about?
           </span>
           <select name="interest" className={fieldClass} defaultValue="">
-            <option value="">Select a pillar</option>
+            <option value="">Pick the closest one</option>
             {pillars.map((pillar) => (
               <option key={pillar.slug} value={pillar.name}>
                 {pillar.name}
@@ -112,7 +112,7 @@ export function ContactForm() {
 
       <label className="grid gap-2">
         <span className="text-xs font-medium uppercase tracking-[0.14em] text-ink-200/60">
-          Project brief
+          What do you need?
         </span>
         <textarea
           name="brief"
@@ -120,7 +120,7 @@ export function ContactForm() {
           rows={6}
           maxLength={4000}
           className={`${fieldClass} resize-y`}
-          placeholder="Scope, constraints, timeline, and what success looks like."
+          placeholder="What you want to happen, anything standing in the way, and when it needs to be done."
         />
       </label>
 
@@ -137,7 +137,7 @@ export function ContactForm() {
           disabled={status === "sending"}
           className="inline-flex items-center justify-center gap-2 rounded-full bg-amber-brand px-7 py-3.5 text-sm font-semibold text-ink-950 transition hover:bg-amber-soft disabled:cursor-not-allowed disabled:opacity-60"
         >
-          {status === "sending" ? "Sending…" : "Send enquiry"}
+          {status === "sending" ? "Sending…" : "Send it"}
           <span aria-hidden>&rarr;</span>
         </button>
         <p

@@ -104,13 +104,14 @@ export function CursorSpotlight() {
   );
 }
 
-/** Animated grid + drifting orbs. Pure CSS motion, no per-frame JS. */
+/** Soft, painterly washes and paper grain. Pure CSS motion, no per-frame JS. */
 export function GridBackdrop() {
   return (
     <div aria-hidden className="pointer-events-none fixed inset-0 z-0 overflow-hidden">
-      <div className="animate-grid-drift absolute inset-[-50%] opacity-[0.055] [background-image:linear-gradient(to_right,#fff_1px,transparent_1px),linear-gradient(to_bottom,#fff_1px,transparent_1px)] [background-size:72px_72px]" />
-      <div className="animate-orb-a absolute -left-40 top-1/4 h-[38rem] w-[38rem] rounded-full bg-radial from-amber-brand/10 to-transparent blur-3xl" />
-      <div className="animate-orb-b absolute -right-52 top-2/3 h-[44rem] w-[44rem] rounded-full bg-radial from-amber-deep/8 to-transparent blur-3xl" />
+      <div className="grain absolute inset-0 opacity-[0.5]" />
+      <div className="animate-orb-a absolute -left-52 top-[12%] h-[42rem] w-[42rem] rounded-full bg-radial from-amber-brand/12 via-amber-deep/5 to-transparent blur-3xl" />
+      <div className="animate-orb-b absolute -right-56 top-[58%] h-[48rem] w-[48rem] rounded-full bg-radial from-amber-deep/10 to-transparent blur-3xl" />
+      <div className="animate-float absolute left-[35%] top-[35%] h-[30rem] w-[30rem] rounded-full bg-radial from-ink-100/4 to-transparent blur-3xl" />
     </div>
   );
 }

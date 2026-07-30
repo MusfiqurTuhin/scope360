@@ -14,8 +14,8 @@ export default function CapabilitiesPage() {
     <>
       <PageHero
         eyebrow="Capabilities"
-        title="A complete delivery architecture, not a service menu."
-        lede="Scope360 is organized into three strategic pillars. Each stands alone; together they cover an initiative from ground works to post-launch operations."
+        title="Not a list of services. A team that finishes things."
+        lede="We work in three parts. Any one of them stands on its own — together they cover a project from the ground up to the day it opens, and every day after."
       />
 
       {pillars.map((pillar, i) => (
@@ -55,9 +55,9 @@ export default function CapabilitiesPage() {
 
       <Section className="border-b border-white/5">
         <SectionHeading
-          eyebrow="Technical depth"
-          title="The capability stack behind delivery"
-          lede="Stack selection changes by project. The engineering layers we operate across do not."
+          eyebrow="Delivery capability"
+          title="What we can put on the ground"
+          lede="The mix changes from job to job. What we are able to bring does not."
         />
         <div className="mt-14 grid gap-px overflow-hidden rounded-2xl border border-white/10 bg-white/8 md:grid-cols-2 lg:grid-cols-4">
           {capabilityStack.map((group) => (
@@ -83,12 +83,12 @@ export default function CapabilitiesPage() {
       <Section>
         <div className="flex flex-col items-start gap-8 rounded-2xl border border-white/10 bg-ink-900/60 p-10 md:flex-row md:items-center md:justify-between">
           <div>
-            <h2 className="text-2xl font-semibold tracking-tight text-white">
+            <h2 className="font-display text-3xl leading-tight text-ink-100">
               Not sure which pillar you need?
             </h2>
             <p className="mt-3 max-w-xl text-sm text-ink-200/65">
-              Most programs start with a discovery engagement — a scoped audit
-              that defines objectives, KPIs, and constraints before commitment.
+              Most projects start with a short piece of work to figure out what
+              is actually needed — before you commit to anything.
             </p>
           </div>
           <ButtonLink href="/contact">Request discovery</ButtonLink>

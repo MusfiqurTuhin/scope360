@@ -11,7 +11,7 @@ export const company = {
   name: "Scope360",
   tagline: "Premier Full-Service Execution Partner",
   support:
-    "End-to-end physical, digital, and operational delivery — orchestrated by a single accountable partner.",
+    "We plan it, build it, run it, and look after it — with one team answerable for the whole thing.",
   vision:
     "To empower global organizations with flawless project delivery and transformative digital experiences, turning complex strategic visions into tangible, high-impact ground realities with unmatched precision.",
   mission:
@@ -28,8 +28,8 @@ export const pillars: Pillar[] = [
     slug: "physical-infrastructure",
     index: "01",
     name: "Physical Infrastructure 360°",
-    lede: "Ground execution held to an engineering standard — sites, builds, and field teams delivered on schedule and to specification.",
-    outcome: "Complex ground initiatives delivered without coordination gaps.",
+    lede: "Everything that has to be built, fitted out, or staffed on the ground — done properly, and done on time.",
+    outcome: "Nothing falls through the gap between one contractor and the next.",
     services: [
       {
         title: "Civil Works",
@@ -53,8 +53,8 @@ export const pillars: Pillar[] = [
     slug: "digital-transformation",
     index: "02",
     name: "Digital Transformation 360°",
-    lede: "Production-grade platforms, data infrastructure, and applied AI — built to run the operation, not to demo well.",
-    outcome: "Decisions made on live data instead of retrospective reporting.",
+    lede: "The websites, apps, and screens that make the whole thing easy to run — and easy to see how it is going.",
+    outcome: "You see what is happening while it happens, not weeks later.",
     services: [
       {
         title: "Digital Ecosystems",
@@ -78,8 +78,8 @@ export const pillars: Pillar[] = [
     slug: "managed-services",
     index: "03",
     name: "Managed Services 360°",
-    lede: "The layer most partners walk away from — procurement, assets, facilities, and support, governed for the long term.",
-    outcome: "Operational continuity long after launch day.",
+    lede: "The part most people walk away from — buying, maintaining, staffing, and looking after it, year after year.",
+    outcome: "It keeps working long after opening day.",
     services: [
       {
         title: "Strategic Procurement",
@@ -163,39 +163,39 @@ export const engagements = [
 
 export const capabilityStack = [
   {
-    group: "Platforms & Applications",
+    group: "Field & Site Operations",
     items: [
-      "Web platforms and dashboards",
-      "Mobile applications",
-      "Registration and ticketing systems",
-      "Portals, ERP and CRM modules",
+      "Field team mobilization and supervision",
+      "Venue procurement and permitting",
+      "HSE and safety protocol enforcement",
+      "Multi-site programme coordination",
     ],
   },
   {
-    group: "Data & Intelligence",
+    group: "Build & Fabrication",
     items: [
-      "Data warehousing and pipelines",
-      "Visualization and M&E dashboards",
-      "Forecasting and optimization models",
-      "Computer vision and OCR systems",
+      "Civil construction and refurbishment",
+      "Custom fabrication and joinery",
+      "AV, lighting, and rigging architecture",
+      "Spatial planning and site layout",
     ],
   },
   {
-    group: "Automation & AI",
+    group: "Procurement & Logistics",
     items: [
-      "Workflow and CRM automation",
-      "Retrieval-augmented assistants",
-      "Generative content pipelines",
-      "API and system integrations",
+      "Vendor panel curation and contracting",
+      "Supply chain and freight coordination",
+      "Equipment leasing and asset tracking",
+      "Fleet, security, and waste management",
     ],
   },
   {
-    group: "Cloud & Operations",
+    group: "Digital, Data & Support",
     items: [
-      "Cloud infrastructure and hosting",
-      "CI/CD, monitoring and backups",
-      "Access control and security practice",
-      "24/7 support and helpdesk",
+      "Registration, ticketing and access platforms",
+      "Operational dashboards and M&E reporting",
+      "Workflow automation and integrations",
+      "24/7 monitoring and helpdesk",
     ],
   },
 ];
@@ -214,20 +214,20 @@ export const governance = {
 
 export const engagementModels = [
   {
-    title: "Discovery Engagement",
-    body: "Scoping, operational audit, or program planning before capital is committed.",
+    title: "A first look",
+    body: "A short piece of work to scope it out and price it properly, before you commit.",
   },
   {
-    title: "Delivery Program",
-    body: "Full-scope execution across infrastructure, platform build, and mobilization.",
+    title: "The full job",
+    body: "We take the whole thing on — the building, the systems, and the people.",
   },
   {
-    title: "Managed Retainer",
-    body: "Ongoing operations, maintenance, support, and optimization under SLA.",
+    title: "Ongoing care",
+    body: "We stay on to run it, maintain it, and keep it working.",
   },
   {
-    title: "Strategic Partnership",
-    body: "Long-horizon programs with dedicated capacity and embedded governance.",
+    title: "A long partnership",
+    body: "A dedicated team that stays with you across years, not months.",
   },
 ];
 

@@ -20,7 +20,7 @@ export default function ApproachPage() {
       <PageHero
         eyebrow="Approach"
         title="Align. Architect. Execute. Optimize."
-        lede="A repeatable operating system for high-stakes delivery — so scope, risk, and reporting stay legible from kickoff through handover."
+        lede="The same four steps every time, so you always know what is happening, what it costs, and what is coming next."
       />
 
       <Section className="border-b border-white/5">
@@ -49,9 +49,9 @@ export default function ApproachPage() {
 
       <Section className="border-b border-white/5 bg-ink-900/40">
         <SectionHeading
-          eyebrow="Engagement models"
+          eyebrow="How we work together"
           title="Four ways to work with us"
-          lede="Structured to match programme maturity — from a single scoping study to embedded, long-horizon capacity."
+          lede="From a single piece of scoping work through to a team that stays with you for years."
         />
         <div className="mt-14 grid gap-px overflow-hidden rounded-2xl border border-white/10 bg-white/8 sm:grid-cols-2 lg:grid-cols-4">
           {engagementModels.map((model) => (
@@ -70,7 +70,7 @@ export default function ApproachPage() {
       <Section className="border-b border-white/5">
         <SectionHeading
           eyebrow="Operating principles"
-          title="What clients rely on us for"
+          title="What people come to us for"
         />
         <div className="mt-14 grid gap-6 md:grid-cols-2">
           {differentiators.map((item) => (

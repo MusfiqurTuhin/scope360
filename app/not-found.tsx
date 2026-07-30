@@ -6,7 +6,7 @@ export default function NotFound() {
       <p className="text-xs font-semibold uppercase tracking-[0.24em] text-amber-brand">
         Error 404
       </p>
-      <h1 className="mt-6 text-(length:--text-h1) font-semibold tracking-tight text-white">
+      <h1 className="font-display mt-6 text-(length:--text-h1) text-ink-100">
         This page is out of scope.
       </h1>
       <p className="mt-4 max-w-md text-ink-200/65">

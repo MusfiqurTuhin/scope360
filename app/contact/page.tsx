@@ -15,18 +15,18 @@ export default function ContactPage() {
     <>
       <PageHero
         eyebrow="Contact"
-        title="Bring us the scope. We will bring the architecture."
-        lede="Tell us the objective, the constraints, and the deadline. A discovery conversation is the fastest way to find out whether we are the right partner."
+        title="Tell us what you need. We will tell you how."
+        lede="What are you trying to do, what is in the way, and when does it need to be finished? One conversation is usually enough to tell whether we are the right people."
       />
 
       <Section>
         <div className="grid gap-14 lg:grid-cols-[1.15fr_0.85fr]">
           <div className="rounded-2xl border border-white/10 bg-ink-900/50 p-8 md:p-10">
-            <h2 className="text-xl font-semibold tracking-tight text-white">
-              Project enquiry
+            <h2 className="font-display text-2xl text-ink-100">
+              Tell us about it
             </h2>
             <p className="mt-2 text-sm text-ink-200/60">
-              All fields marked are required. We respond within one business day.
+              We read every message and reply within one working day.
             </p>
             <div className="mt-8">
               <ContactForm />
@@ -36,7 +36,7 @@ export default function ContactPage() {
           <aside className="grid gap-8 self-start">
             <div className="rounded-2xl border border-white/10 bg-ink-900/50 p-8">
               <h2 className="text-xs font-semibold uppercase tracking-[0.2em] text-amber-brand">
-                Engagement models
+                How we work together
               </h2>
               <ul className="mt-6 space-y-5">
                 {engagementModels.map((model) => (

@@ -1,5 +1,15 @@
 # Changelog
 
+## [2026-07-31] — Repositioning and artistic direction
+
+- **Repositioned the site away from a software-company voice.** The two source documents conflict; the site now follows the company deck (a full-service *execution* partner) rather than the premium-profile docx (a software/AI firm). Digital is one of three pillars, not the headline.
+- Replaced the engineering-only "capability stack" with an execution-led one: Field & Site Operations, Build & Fabrication, Procurement & Logistics, and Digital, Data & Support.
+- Rewrote all authored copy in plain, non-technical English aimed at lay and artistic readers. Jargon such as "architecture", "platform", "delivery model", and "engagement" was removed from headlines, ledes, form labels, and API error messages. The client's own wording from the deck is preserved.
+- **New artistic direction:** Instrument Serif editorial display face for headlines against Inter for body copy; warm near-black and cream palette replacing the cold greyscale; the technical grid backdrop replaced with soft painterly washes and paper grain.
+- Added a no-JS safeguard: `<html>` carries `no-js`, removed by an inline script, with CSS forcing revealed elements visible. Without it, disabled or failed JavaScript left every animated element at opacity 0.
+- `CountUp` now server-renders its final value and resets to zero only when it can actually animate, so no-JS output reads "03" rather than "00".
+- Verified: build clean, typecheck passes, zero horizontal overflow across six pages, no console or page errors, and the page fully readable with JavaScript disabled.
+
 ## [2026-07-31] — Motion layer, custom domain, contact delivery
 
 - Added an xAI-inspired motion system: `components/motion.tsx` (scroll `Reveal` with five variants, `Stagger`, `CountUp`, `ScrambleText`) and `components/effects.tsx` (`ScrollProgress`, `CursorSpotlight`, `GridBackdrop`, `Marquee`, `SpotlightCard`, `MagneticButton`).

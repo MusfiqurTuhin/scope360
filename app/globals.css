@@ -1,24 +1,25 @@
 @import "tailwindcss";
 
 @theme {
-  --color-ink-950: #060606;
-  --color-ink-900: #0b0b0c;
-  --color-ink-800: #141416;
-  --color-ink-700: #1e1e21;
-  --color-ink-600: #2b2b30;
-  --color-ink-400: #6e6e76;
-  --color-ink-200: #c9c9cf;
-  --color-ink-100: #e9e9ec;
+  --color-ink-950: #0c0a09;
+  --color-ink-900: #14110f;
+  --color-ink-800: #1e1a17;
+  --color-ink-700: #2a2420;
+  --color-ink-600: #3a322c;
+  --color-ink-400: #8a8078;
+  --color-ink-200: #d9d0c4;
+  --color-ink-100: #f5efe6;
 
   --color-amber-brand: #f5b42a;
   --color-amber-deep: #d8940c;
   --color-amber-soft: #ffd47a;
 
   --font-sans: var(--font-inter), ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif;
+  --font-display: var(--font-display-serif), ui-serif, Georgia, "Times New Roman", serif;
 
-  --text-display: clamp(2.6rem, 7vw, 5.4rem);
-  --text-h1: clamp(2.1rem, 5vw, 3.6rem);
-  --text-h2: clamp(1.6rem, 3.4vw, 2.5rem);
+  --text-display: clamp(2.8rem, 7.4vw, 6rem);
+  --text-h1: clamp(2.2rem, 5.2vw, 3.9rem);
+  --text-h2: clamp(1.7rem, 3.6vw, 2.7rem);
 
   --animate-rise: rise 0.7s cubic-bezier(0.22, 1, 0.36, 1) both;
   --animate-line: line-in 1.05s cubic-bezier(0.16, 1, 0.3, 1) both;
@@ -129,10 +130,29 @@ body {
 @utility grain {
   background-image: radial-gradient(
     circle at 1px 1px,
-    color-mix(in srgb, var(--color-ink-100) 7%, transparent) 1px,
+    color-mix(in srgb, var(--color-ink-100) 6%, transparent) 1px,
     transparent 0
   );
-  background-size: 22px 22px;
+  background-size: 26px 26px;
+}
+
+/* Editorial display face for headlines. */
+@utility font-display {
+  font-family: var(--font-display);
+  font-weight: 400;
+  letter-spacing: -0.015em;
+}
+
+/* Hand-drawn feel underline for accented words. */
+@utility ink-underline {
+  background-image: linear-gradient(
+    to right,
+    color-mix(in srgb, var(--color-amber-brand) 70%, transparent),
+    color-mix(in srgb, var(--color-amber-brand) 25%, transparent)
+  );
+  background-repeat: no-repeat;
+  background-position: 0 92%;
+  background-size: 100% 0.09em;
 }
 
 /* Animated gradient sheen for the hero accent word. */
@@ -157,4 +177,13 @@ body {
   display: block;
   overflow: hidden;
   padding-bottom: 0.08em;
+}
+
+/* Without JavaScript the reveal observers never run, which would leave every
+   animated element at opacity 0. Force everything visible in that case. */
+.no-js [style*="opacity:0"],
+.no-js [style*="opacity: 0"] {
+  opacity: 1 !important;
+  transform: none !important;
+  filter: none !important;
 }

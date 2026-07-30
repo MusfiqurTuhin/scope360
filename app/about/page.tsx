@@ -11,28 +11,28 @@ export const metadata: Metadata = {
 
 const capabilities = [
   {
-    title: "Technical leadership",
-    body: "Architecture, infrastructure, database planning, code review, and deployment discipline.",
+    title: "Field operations",
+    body: "Mobilization, on-site supervision, permitting, safety frameworks, and logistics.",
   },
   {
     title: "Programme & delivery",
     body: "Project organization, milestone control, vendor coordination, and risk management.",
   },
   {
-    title: "Field operations",
-    body: "Mobilization, on-site supervision, permitting, safety frameworks, and logistics.",
+    title: "Procurement & supply chain",
+    body: "Vendor panels, framework contracts, freight coordination, and asset governance.",
   },
   {
-    title: "Brand & interface",
-    body: "UI/UX planning, identity systems, motion design, and visual consistency across products.",
+    title: "Build & fabrication",
+    body: "Civil works, custom fabrication, AV and lighting architecture, and spatial planning.",
   },
   {
-    title: "Client operations",
-    body: "Documentation, reporting, communication cadence, and stakeholder management.",
+    title: "Digital & data",
+    body: "Registration platforms, operational dashboards, automation, and M&E reporting.",
   },
   {
-    title: "Quality assurance",
-    body: "Testing, data accuracy, performance validation, and edge-case verification before handover.",
+    title: "Client operations & QA",
+    body: "Documentation, reporting cadence, stakeholder management, and pre-handover verification.",
   },
 ];
 
@@ -41,7 +41,7 @@ export default function AboutPage() {
     <>
       <PageHero
         eyebrow="About us"
-        title="A single, authoritative partner for initiatives that cannot fail."
+        title="One partner for the jobs that cannot go wrong."
         lede={company.about[1]}
       />
 
@@ -73,8 +73,8 @@ export default function AboutPage() {
       <Section className="border-b border-white/5 bg-ink-900/40">
         <SectionHeading
           eyebrow="Operating strength"
-          title="Structured by capability, not by job title"
-          lede="A cross-functional bench that covers engineering, field operations, design, and client operations under one delivery structure."
+          title="Built around what we can do, not job titles"
+          lede="One team covering site work, building, buying, technology, and looking after the client — all under the same roof."
         />
         <div className="mt-14 grid gap-6 md:grid-cols-2 lg:grid-cols-3">
           {capabilities.map((item) => (
@@ -91,7 +91,7 @@ export default function AboutPage() {
       </Section>
 
       <Section className="border-b border-white/5">
-        <SectionHeading eyebrow="What sets us apart" title="Four commitments" />
+        <SectionHeading eyebrow="What sets us apart" title="What you can hold us to" />
         <div className="mt-14 grid gap-px overflow-hidden rounded-2xl border border-white/10 bg-white/8 sm:grid-cols-2 lg:grid-cols-4">
           {differentiators.map((item) => (
             <div key={item.title} className="bg-ink-950 p-8">
@@ -109,7 +109,7 @@ export default function AboutPage() {
       <Section>
         <div className="flex flex-col items-start gap-8 rounded-2xl border border-white/10 bg-ink-900/60 p-10 md:flex-row md:items-center md:justify-between">
           <div>
-            <h2 className="text-2xl font-semibold tracking-tight text-white">
+            <h2 className="font-display text-3xl leading-tight text-ink-100">
               {company.tagline}
             </h2>
             <p className="mt-3 max-w-xl text-sm text-ink-200/65">

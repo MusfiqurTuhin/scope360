@@ -33,7 +33,7 @@ export function SectionHeading({
         className={`flex flex-col gap-5 ${centered ? "items-center text-center" : "items-start"}`}
       >
         {eyebrow ? <Eyebrow>{eyebrow}</Eyebrow> : null}
-        <h2 className="max-w-3xl text-(length:--text-h2) font-semibold leading-[1.1] tracking-tight text-white text-balance">
+        <h2 className="font-display max-w-3xl text-(length:--text-h2) leading-[1.12] text-ink-100 text-balance">
           {title}
         </h2>
         {lede ? (

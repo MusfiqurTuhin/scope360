@@ -31,10 +31,10 @@ function validate(body: unknown): { data: ContactPayload } | { error: string } {
   if (asString(raw.company_website, 200) !== "") {
     return { error: "Submission rejected." };
   }
-  if (name.length < 2) return { error: "Please provide your full name." };
-  if (!EMAIL_PATTERN.test(email)) return { error: "Please provide a valid work email." };
+  if (name.length < 2) return { error: "Please tell us your name." };
+  if (!EMAIL_PATTERN.test(email)) return { error: "That email address does not look right." };
   if (brief.length < 20) {
-    return { error: "Please describe the project in at least 20 characters." };
+    return { error: "Please tell us a little more about what you need." };
   }
 
   return {

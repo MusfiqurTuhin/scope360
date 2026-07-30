@@ -41,8 +41,8 @@ export default function IndustriesPage() {
     <>
       <PageHero
         eyebrow="Industries"
-        title="Built for sectors where execution risk is real."
-        lede="Public programmes, enterprise environments, and technology ecosystems — each with different constraints, all requiring the same accountability."
+        title="For work where getting it wrong is expensive."
+        lede="Government programmes, corporate sites, and large events. Different worlds, same need — somebody who will actually get it done."
       />
 
       <Section className="border-b border-white/5">
@@ -71,7 +71,7 @@ export default function IndustriesPage() {
       <Section className="border-b border-white/5 bg-ink-900/40">
         <SectionHeading
           eyebrow="Applications"
-          title="What we are typically asked to deliver"
+          title="What we usually get asked to do"
         />
         <div className="mt-14 grid gap-px overflow-hidden rounded-2xl border border-white/10 bg-white/8 md:grid-cols-2 lg:grid-cols-3">
           {applications.map((item) => (
@@ -90,7 +90,7 @@ export default function IndustriesPage() {
       <Section>
         <div className="flex flex-col items-start gap-8 rounded-2xl border border-white/10 bg-ink-900/60 p-10 md:flex-row md:items-center md:justify-between">
           <div>
-            <h2 className="text-2xl font-semibold tracking-tight text-white">
+            <h2 className="font-display text-3xl leading-tight text-ink-100">
               Every engagement draws on all three pillars.
             </h2>
             <p className="mt-3 max-w-xl text-sm text-ink-200/65">
