@@ -30,6 +30,26 @@
   --animate-shimmer: shimmer 6s ease-in-out infinite;
   --animate-pulse-ring: pulse-ring 3.4s ease-out infinite;
   --animate-float: float 7s ease-in-out infinite;
+  --animate-scope-sweep: scope-spin 7s linear infinite;
+  --animate-scope-ring: scope-spin 90s linear infinite;
+  --animate-scope-drift: scope-spin-reverse 120s linear infinite;
+  --animate-scope-orbit: scope-spin 7s linear infinite;
+  --animate-scope-pulse: scope-pulse 4.5s ease-in-out infinite;
+}
+
+@keyframes scope-spin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+@keyframes scope-spin-reverse {
+  from { transform: rotate(360deg); }
+  to { transform: rotate(0deg); }
+}
+
+@keyframes scope-pulse {
+  0%, 100% { opacity: 0.35; transform: scale(0.94); transform-origin: 200px 200px; }
+  50% { opacity: 0.8; transform: scale(1.06); transform-origin: 200px 200px; }
 }
 
 @keyframes rise {

@@ -1,5 +1,14 @@
 # Changelog
 
+## [2026-07-31] — Animated Scope360 hero mark
+
+- Added `components/scope-dial.tsx`: an animated 360° scope dial in the hero, drawn from the logo itself — the concentric fingerprint arcs behind the wordmark and the crosshair cut through the "o" of scope, combined with a full-circle tick dial and a radar sweep.
+- Composed of a 72-tick ring (marked every 5°, emphasised every 30° and 90°), four concentric arcs counter-rotating against the ring, a masked conic-gradient sweep, a pulsing core, and a marker orbiting the full 360.
+- Pure SVG and CSS animation — no JavaScript runs per frame — and completely static under `prefers-reduced-motion` (verified: zero pixel difference between frames).
+- Opacity scales with breakpoint (25% mobile, 35% tablet, 55% desktop) so the arcs never compete with headline legibility on small screens.
+- The dial takes its positioning utility from the caller; it deliberately carries no `relative` of its own, which would otherwise win over an `absolute` passed in and drop it into normal flow.
+- Verified: no horizontal overflow across 54 page/viewport combinations, hero CTAs still above the fold, animation confirmed running.
+
 ## [2026-07-31] — Above-the-fold fix, density pass, full responsive sweep
 
 - **Fixed the hero call-to-action falling below the fold.** At a 1470x790 viewport the buttons sat 144px off-screen and the supporting paragraph was cut. The display type scale was far too large.
