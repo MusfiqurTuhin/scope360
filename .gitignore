@@ -1,0 +1,11 @@
+node_modules
+.next
+out
+.env*
+!.env.example
+*.pem
+*.key
+*secret*
+.DS_Store
+next-env.d.ts
+tsconfig.tsbuildinfo
