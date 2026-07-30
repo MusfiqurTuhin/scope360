@@ -2,6 +2,7 @@ import type { Metadata, Viewport } from "next";
 import { Inter } from "next/font/google";
 import { SiteHeader } from "@/components/site-header";
 import { SiteFooter } from "@/components/site-footer";
+import { GridBackdrop, ScrollProgress } from "@/components/effects";
 import { company } from "@/lib/content";
 import "./globals.css";
 
@@ -72,11 +73,15 @@ export default function RootLayout({
         >
           Skip to content
         </a>
+        <GridBackdrop />
+        <ScrollProgress />
         <SiteHeader />
-        <main id="main" className="pt-18">
+        <main id="main" className="relative z-10 pt-18">
           {children}
         </main>
-        <SiteFooter />
+        <div className="relative z-10">
+          <SiteFooter />
+        </div>
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(organizationSchema) }}

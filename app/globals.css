@@ -21,7 +21,14 @@
   --text-h2: clamp(1.6rem, 3.4vw, 2.5rem);
 
   --animate-rise: rise 0.7s cubic-bezier(0.22, 1, 0.36, 1) both;
-  --animate-sweep: sweep 14s linear infinite;
+  --animate-line: line-in 1.05s cubic-bezier(0.16, 1, 0.3, 1) both;
+  --animate-marquee: marquee 38s linear infinite;
+  --animate-grid-drift: grid-drift 34s linear infinite;
+  --animate-orb-a: orb-a 22s ease-in-out infinite;
+  --animate-orb-b: orb-b 28s ease-in-out infinite;
+  --animate-shimmer: shimmer 6s ease-in-out infinite;
+  --animate-pulse-ring: pulse-ring 3.4s ease-out infinite;
+  --animate-float: float 7s ease-in-out infinite;
 }
 
 @keyframes rise {
@@ -29,9 +36,46 @@
   to { opacity: 1; transform: none; }
 }
 
-@keyframes sweep {
-  from { transform: rotate(0deg); }
-  to { transform: rotate(360deg); }
+/* Hero lines wipe up from behind their own mask. */
+@keyframes line-in {
+  from { opacity: 0; transform: translateY(105%) rotate(2deg); }
+  to { opacity: 1; transform: translateY(0) rotate(0deg); }
+}
+
+@keyframes marquee {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
+}
+
+@keyframes grid-drift {
+  from { transform: translate3d(0, 0, 0); }
+  to { transform: translate3d(72px, 72px, 0); }
+}
+
+@keyframes orb-a {
+  0%, 100% { transform: translate3d(0, 0, 0) scale(1); }
+  50% { transform: translate3d(60px, -50px, 0) scale(1.12); }
+}
+
+@keyframes orb-b {
+  0%, 100% { transform: translate3d(0, 0, 0) scale(1.05); }
+  50% { transform: translate3d(-70px, 40px, 0) scale(0.92); }
+}
+
+@keyframes shimmer {
+  0%, 100% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+}
+
+@keyframes pulse-ring {
+  0% { transform: scale(0.85); opacity: 0.7; }
+  70% { transform: scale(1.6); opacity: 0; }
+  100% { transform: scale(1.6); opacity: 0; }
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-9px); }
 }
 
 :root {
@@ -39,11 +83,15 @@
 }
 
 html {
+  overflow-x: clip;
   scroll-behavior: smooth;
   -webkit-text-size-adjust: 100%;
 }
 
 body {
+  /* Reveal animations translate horizontally while hidden; `clip` contains that
+     without creating a scroll container (which would break the fixed header). */
+  overflow-x: clip;
   background-color: var(--color-ink-950);
   color: var(--color-ink-100);
   font-family: var(--font-sans);
@@ -85,4 +133,28 @@ body {
     transparent 0
   );
   background-size: 22px 22px;
+}
+
+/* Animated gradient sheen for the hero accent word. */
+@utility text-sheen {
+  background-image: linear-gradient(
+    100deg,
+    var(--color-amber-deep) 0%,
+    var(--color-amber-brand) 25%,
+    var(--color-amber-soft) 45%,
+    var(--color-amber-brand) 65%,
+    var(--color-amber-deep) 100%
+  );
+  background-size: 250% 100%;
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  animation: var(--animate-shimmer);
+}
+
+/* Each hero line masks its own wipe-up reveal. */
+@utility line-mask {
+  display: block;
+  overflow: hidden;
+  padding-bottom: 0.08em;
 }
