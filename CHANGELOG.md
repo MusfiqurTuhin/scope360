@@ -1,5 +1,10 @@
 # Changelog
 
+## [2026-07-31] — Digital Ecosystems name restored
+
+- "Websites & Apps" reverted to **Digital Ecosystems** in both the capabilities list and the hero orbit, at the client's request. The plain-language description underneath is unchanged.
+
+
 ## [2026-07-31] — Plain-language pass across the whole site
 
 - Removed the remaining industry jargon everywhere, not just in headlines: architecture, platform, infrastructure, ecosystem, framework, stack, deploy, integrate, orchestrate, seamless, robust, turnkey, holistic, scalable, data-driven, workflow, dashboard, multi-tenant. Verified zero occurrences in the rendered output of all six pages.

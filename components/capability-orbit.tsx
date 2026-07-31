@@ -29,7 +29,7 @@ const CAPABILITIES = [
   "Experiential Events", // 180° — bottom
   "Field Teams",
   // Digital & Data — back up the left.
-  "Websites & Apps",
+  "Digital Ecosystems",
   "Reports & Screens",
   "Ticketing & Entry",
   "Internal Tools",

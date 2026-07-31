@@ -57,7 +57,7 @@ export const pillars: Pillar[] = [
     outcome: "You see what is happening while it happens, not weeks later.",
     services: [
       {
-        title: "Websites & Apps",
+        title: "Digital Ecosystems",
         body: "Websites, phone apps, and sign-up pages that are quick to use and hold up when a lot of people arrive at once.",
       },
       {
