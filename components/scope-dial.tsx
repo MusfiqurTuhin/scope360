@@ -12,12 +12,19 @@
 
 const TICK_COUNT = 72; // one every 5 degrees
 
-export function ScopeDial({ className = "" }: { className?: string }) {
+export function ScopeDial({
+  className = "",
+  activeQuadrant = -1,
+}: {
+  className?: string;
+  /** 0-3 highlights that cardinal marker; -1 highlights none. */
+  activeQuadrant?: number;
+}) {
   const ticks = Array.from({ length: TICK_COUNT }, (_, i) => {
     const angle = (360 / TICK_COUNT) * i;
     const major = i % 6 === 0; // every 30 degrees
     const cardinal = i % 18 === 0; // every 90 degrees
-    return { angle, major, cardinal };
+    return { angle, major, cardinal, quadrant: cardinal ? i / 18 : -1 };
   });
 
   return (
@@ -33,8 +40,8 @@ export function ScopeDial({ className = "" }: { className?: string }) {
         style={{
           background:
             "conic-gradient(from 0deg, rgba(245,180,42,0) 0deg, rgba(245,180,42,0) 250deg, rgba(245,180,42,0.05) 300deg, rgba(245,180,42,0.22) 350deg, rgba(245,180,42,0.45) 360deg)",
-          maskImage: "radial-gradient(circle, transparent 22%, #000 34%, #000 100%)",
-          WebkitMaskImage: "radial-gradient(circle, transparent 22%, #000 34%, #000 100%)",
+          maskImage: "radial-gradient(circle, transparent 46%, #000 58%, #000 100%)",
+          WebkitMaskImage: "radial-gradient(circle, transparent 46%, #000 58%, #000 100%)",
         }}
       />
 
@@ -60,18 +67,18 @@ export function ScopeDial({ className = "" }: { className?: string }) {
             r="150"
             fill="none"
             stroke="#f5b42a"
-            strokeOpacity="0.12"
+            strokeOpacity="0.2"
             strokeWidth="1"
             strokeDasharray="2 10"
           />
-          <circle cx="200" cy="200" r="112" fill="none" stroke="#f5efe6" strokeOpacity="0.07" strokeWidth="1" />
+          <circle cx="200" cy="200" r="112" fill="none" stroke="#f5efe6" strokeOpacity="0.12" strokeWidth="1" />
           <circle
             cx="200"
             cy="200"
             r="74"
             fill="none"
             stroke="#f5b42a"
-            strokeOpacity="0.2"
+            strokeOpacity="0.3"
             strokeWidth="1"
             strokeDasharray="34 14"
           />
@@ -79,8 +86,9 @@ export function ScopeDial({ className = "" }: { className?: string }) {
 
         {/* 360-degree tick ring. */}
         <g className="animate-scope-ring" style={{ transformOrigin: "200px 200px" }}>
-          {ticks.map(({ angle, major, cardinal }) => {
-            const length = cardinal ? 22 : major ? 13 : 6;
+          {ticks.map(({ angle, major, cardinal, quadrant }) => {
+            const isActive = cardinal && quadrant === activeQuadrant;
+            const length = isActive ? 32 : cardinal ? 22 : major ? 13 : 6;
             return (
               <line
                 key={angle}
@@ -89,16 +97,17 @@ export function ScopeDial({ className = "" }: { className?: string }) {
                 x2="200"
                 y2={200 - 192 + length}
                 stroke={cardinal ? "#ffd47a" : "#f5b42a"}
-                strokeOpacity={cardinal ? 0.85 : major ? 0.45 : 0.2}
-                strokeWidth={cardinal ? 2 : 1}
+                strokeOpacity={isActive ? 1 : cardinal ? 0.8 : major ? 0.55 : 0.3}
+                strokeWidth={isActive ? 3 : cardinal ? 2 : 1}
                 transform={`rotate(${angle} 200 200)`}
+                style={{ transition: "stroke-opacity 600ms ease, stroke-width 600ms ease" }}
               />
             );
           })}
         </g>
 
         {/* Crosshair, echoing the cut through the logo's "o". */}
-        <g stroke="#f5b42a" strokeOpacity="0.16" strokeWidth="1">
+        <g stroke="#f5b42a" strokeOpacity="0.24" strokeWidth="1">
           <line x1="8" y1="200" x2="82" y2="200" />
           <line x1="318" y1="200" x2="392" y2="200" />
           <line x1="200" y1="8" x2="200" y2="82" />
@@ -106,6 +115,26 @@ export function ScopeDial({ className = "" }: { className?: string }) {
         </g>
 
         <circle cx="200" cy="200" r="60" fill="url(#scope-core)" className="animate-scope-pulse" />
+
+        {/* Arc pointing at the active reading. */}
+        {activeQuadrant >= 0 ? (
+          <circle
+            cx="200"
+            cy="200"
+            r="168"
+            fill="none"
+            stroke="#f5b42a"
+            strokeOpacity="0.8"
+            strokeWidth="2.5"
+            strokeLinecap="round"
+            strokeDasharray="132 924"
+            style={{
+              transform: `rotate(${activeQuadrant * 90 - 96}deg)`,
+              transformOrigin: "200px 200px",
+              transition: "transform 900ms cubic-bezier(0.16, 1, 0.3, 1)",
+            }}
+          />
+        ) : null}
 
         {/* Marker orbiting the dial, tracing the full 360. */}
         <g className="animate-scope-orbit" style={{ transformOrigin: "200px 200px" }}>

@@ -1,5 +1,15 @@
 # Changelog
 
+## [2026-07-31] — Hero figures moved into the scope dial
+
+- Removed the opaque statistics panel that sat over the dial and hid it. The four figures now cycle **inside** the instrument, one at a time, every 3.5 seconds — the dial carries the content instead of being covered by it.
+- The dial's cardinal tick for the active reading extends and brightens, and an arc sweeps round to point at it, so the instrument indicates which figure is showing.
+- Sized the dial to sit fully in view between the header and the fold (`min(24rem, 42vh)`), rather than bleeding off-screen and passing under the header.
+- Opened the sweep's centre mask from 22% to 46% and added a lens disc behind the readings, because the rotating cone was washing out the text and making figures unreadable as it passed.
+- Lifted the dial's stroke opacities now that it is the focal element rather than ambient background texture.
+- Accessibility and robustness: all four readings are always in the DOM, so search engines, screen readers and non-JavaScript visitors get the complete content. Cycling only starts after hydration confirms motion is allowed; under `prefers-reduced-motion` all four render as a static list. Dot controls allow manual selection and hovering pauses the cycle.
+- Verified: 60 page/viewport combinations with no horizontal overflow and no console errors; dial fully visible and clear of the header with both CTAs above the fold at all 10 desktop and tablet sizes; no-JS render confirmed to contain every reading.
+
 ## [2026-07-31] — Animated Scope360 hero mark
 
 - Added `components/scope-dial.tsx`: an animated 360° scope dial in the hero, drawn from the logo itself — the concentric fingerprint arcs behind the wordmark and the crosshair cut through the "o" of scope, combined with a full-circle tick dial and a radar sweep.

@@ -6,8 +6,8 @@ import {
   Marquee,
   SpotlightCard,
 } from "@/components/effects";
-import { CountUp, Reveal, ScrambleText, Stagger } from "@/components/motion";
-import { ScopeDial } from "@/components/scope-dial";
+import { Reveal, ScrambleText, Stagger } from "@/components/motion";
+import { HeroScope } from "@/components/hero-scope";
 import {
   company,
   differentiators,
@@ -61,10 +61,9 @@ function Hero() {
         className="animate-orb-a pointer-events-none absolute -right-40 -top-56 h-[46rem] w-[46rem] rounded-full bg-radial from-amber-brand/18 via-amber-brand/4 to-transparent blur-2xl"
       />
       <div aria-hidden className="grain pointer-events-none absolute inset-0 opacity-40" />
-      <ScopeDial className="absolute right-[-32%] top-1/2 w-[118vw] -translate-y-1/2 opacity-25 sm:right-[-22%] sm:w-[80vw] sm:opacity-35 lg:right-[-9%] lg:w-[44rem] lg:opacity-[0.55] xl:right-[-3%]" />
 
       <div className="container-page relative py-[clamp(1.75rem,4.5vh,4.5rem)]">
-        <div className="relative z-10 grid items-center gap-10 lg:grid-cols-[1.1fr_0.9fr] lg:gap-14">
+        <div className="relative z-10 grid items-center gap-10 lg:grid-cols-[1.15fr_0.85fr] lg:gap-12">
           <div>
             <div className="animate-rise">
               <Eyebrow>
@@ -103,28 +102,7 @@ function Hero() {
             </Reveal>
           </div>
 
-          <div className="grid gap-px overflow-hidden rounded-2xl border border-white/10 bg-white/8 backdrop-blur-md sm:grid-cols-2 lg:grid-cols-1">
-            <Stagger start={860} step={110}>
-              {[
-                { value: <>360&deg;</>, label: "Physical, digital, and operational scope under one contract" },
-                { value: <CountUp to={3} prefix="0" />, label: "Integrated delivery pillars, not disconnected vendors" },
-                { value: <>24/7</>, label: "Operational monitoring and dedicated helpdesk support" },
-                { value: <>M&amp;E</>, label: "Analytics frameworks embedded in every engagement" },
-              ].map((stat, i) => (
-                <div
-                  key={i}
-                  className="flex h-full items-baseline gap-4 bg-ink-950/85 px-5 py-4 transition-colors duration-500 hover:bg-ink-900/90"
-                >
-                  <p className="font-display shrink-0 text-2xl text-amber-brand md:text-3xl">
-                    {stat.value}
-                  </p>
-                  <p className="text-xs leading-snug text-ink-200/60 sm:text-sm">
-                    {stat.label}
-                  </p>
-                </div>
-              ))}
-            </Stagger>
-          </div>
+          <HeroScope />
         </div>
       </div>
     </section>
