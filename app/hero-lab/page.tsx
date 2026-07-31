@@ -6,6 +6,11 @@ import {
   HeroScanline,
 } from "@/components/hero-variants";
 import { HeroScope } from "@/components/hero-scope";
+import { CapabilityOrbit } from "@/components/capability-orbit";
+import { Eyebrow } from "@/components/ui";
+import { MagneticButton } from "@/components/effects";
+import { Reveal, ScrambleText } from "@/components/motion";
+import { company } from "@/lib/content";
 
 export const metadata: Metadata = {
   title: "Hero options",
@@ -13,7 +18,63 @@ export const metadata: Metadata = {
   robots: { index: false, follow: false },
 };
 
+function HeroCapabilityOrbit() {
+  const lines = [
+    { text: "One partner", accent: false },
+    { text: "from concept", accent: false },
+    { text: "to ground reality —", accent: false },
+    { text: "and everything after.", accent: true },
+  ];
+  return (
+    <section className="relative overflow-hidden">
+      <CapabilityOrbit />
+      <div className="container-page relative z-10 py-[clamp(1.75rem,4.5vh,4.5rem)]">
+        <div className="max-w-2xl">
+          <div className="animate-rise">
+            <Eyebrow>
+              <ScrambleText text={company.tagline} />
+            </Eyebrow>
+          </div>
+          <h1 className="font-display mt-5 text-(length:--text-display) leading-[1.02] text-ink-100 text-balance">
+            {lines.map((line, i) => (
+              <span key={line.text} className="line-mask">
+                <span
+                  className={`animate-line block ${line.accent ? "text-sheen" : ""}`}
+                  style={{ animationDelay: `${160 + i * 110}ms` }}
+                >
+                  {line.text}{" "}
+                </span>
+              </span>
+            ))}
+          </h1>
+          <Reveal delay={620}>
+            <p className="mt-5 max-w-lg text-sm leading-relaxed text-ink-200/75 sm:text-base md:text-lg">
+              We take on big, complicated projects and see them all the way
+              through — from the first conversation to the day-to-day running of
+              it, long after everyone else has gone home.
+            </p>
+          </Reveal>
+          <Reveal delay={740}>
+            <div className="mt-6 flex flex-col gap-3 sm:flex-row">
+              <MagneticButton href="/contact">Start a project</MagneticButton>
+              <MagneticButton href="/capabilities" variant="ghost">
+                Explore capabilities
+              </MagneticButton>
+            </div>
+          </Reveal>
+        </div>
+      </div>
+    </section>
+  );
+}
+
 const OPTIONS = [
+  {
+    id: "e",
+    name: "E — Capability orbit (new)",
+    note: "Every capability rides a 360° ring. It steps round one position every 2.4s, bringing each discipline to the reading point in turn.",
+    render: <HeroCapabilityOrbit />,
+  },
   {
     id: "a",
     name: "A — Corner radar sweep",
