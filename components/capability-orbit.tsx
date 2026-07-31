@@ -4,18 +4,16 @@ import Image from "next/image";
 import { useEffect, useState } from "react";
 
 /**
- * A 360° instrument with the Scope360 mark at its hub.
+ * A 360° instrument. The Scope360 mark sits at the hub and every capability sits
+ * out on the rim at its own 30° stop — twelve stops to a full revolution. A
+ * marker steps from one stop to the next, lighting each capability in turn.
  *
- * A marker steps 30° round the rim every few seconds — one stop per capability,
- * twelve stops to a full revolution — and the capability at that stop is named
- * in the hub beneath the logo. The brand sits at the centre of everything the
- * company covers, which is the point the name is making.
+ * Labels are positioned by angle but never rotated: text on the right half is
+ * anchored from its left edge, text on the left half from its right edge, and
+ * text at top and bottom is centred. That keeps every word horizontal and
+ * readable at any point on the circle, and keeps the whole thing inside its box.
  *
- * Naming in the hub rather than on the rim keeps every label horizontal and
- * readable, and means nothing can collide with the headline or clip off-screen.
- *
- * All capabilities stay in the DOM, so the content is complete for screen
- * readers, crawlers, and anyone without JavaScript.
+ * All capabilities are always in the DOM for screen readers and non-JS visitors.
  */
 
 const CAPABILITIES = [
@@ -35,6 +33,37 @@ const CAPABILITIES = [
 
 const STEP_DEGREES = 360 / CAPABILITIES.length; // 30°
 const DWELL_MS = 2600;
+
+/** Radius of the label ring, as a percentage of the box. */
+const LABEL_RADIUS = 44;
+
+type Placement = { left: string; top: string; translate: string; align: string };
+
+function placeLabel(index: number): Placement {
+  // Stop 0 sits at the top; angles run clockwise from there.
+  const radians = ((index * STEP_DEGREES - 90) * Math.PI) / 180;
+  const cos = Math.cos(radians);
+  const sin = Math.sin(radians);
+
+  const left = 50 + LABEL_RADIUS * cos;
+  const top = 50 + LABEL_RADIUS * sin;
+
+  // Anchor away from the circle so labels never sit on top of the rim.
+  let translate: string;
+  let align: string;
+  if (cos > 0.25) {
+    translate = "translate(0, -50%)";
+    align = "text-left";
+  } else if (cos < -0.25) {
+    translate = "translate(-100%, -50%)";
+    align = "text-right";
+  } else {
+    translate = "translate(-50%, -50%)";
+    align = "text-center";
+  }
+
+  return { left: `${left}%`, top: `${top}%`, translate, align };
+}
 
 export function CapabilityOrbit() {
   const [index, setIndex] = useState(0);
@@ -56,52 +85,63 @@ export function CapabilityOrbit() {
   // to get from the twelfth capability to the first.
   const markerRotation = index * STEP_DEGREES;
   const activeSlot = index % CAPABILITIES.length;
-  const active = CAPABILITIES[activeSlot] ?? CAPABILITIES[0];
 
   return (
     <div
-      className="relative mx-auto aspect-square w-full max-w-[20rem] sm:max-w-[24rem] lg:max-w-[min(30rem,52vh)]"
+      className="relative mx-auto aspect-square w-full max-w-[17rem] sm:max-w-[22rem] md:max-w-[24rem] lg:max-w-[min(20rem,46vh)] xl:max-w-[min(26rem,50vh)]"
       onMouseEnter={() => setPaused(true)}
       onMouseLeave={() => setPaused(false)}
     >
       <Instrument rotation={markerRotation} activeSlot={activeSlot} running={running} />
 
-      {/* Hub: the mark, and the capability currently under the marker. */}
-      <div className="absolute inset-[19%] flex flex-col items-center justify-center text-center">
+      {/* One label per stop, out on the rim. */}
+      {CAPABILITIES.map((capability, i) => {
+        const { left, top, translate, align } = placeLabel(i);
+        const isActive = running && i === activeSlot;
+        return (
+          <span
+            key={capability}
+            aria-current={isActive ? "true" : undefined}
+            className={`absolute hidden w-[5.5rem] leading-tight md:block lg:w-[6.5rem] xl:w-[9rem] ${align} ${
+              isActive
+                ? "font-display text-amber-brand text-sm lg:text-base xl:text-xl"
+                : "text-[0.5rem] uppercase tracking-[0.1em] text-ink-200 lg:text-[0.55rem] xl:text-[0.65rem]"
+            }`}
+            style={{
+              left,
+              top,
+              transform: translate,
+              opacity: isActive ? 1 : 0.3,
+              transition: "opacity 600ms ease, color 600ms ease",
+            }}
+          >
+            {capability}
+          </span>
+        );
+      })}
+
+      {/* Hub: the mark. */}
+      <div className="absolute inset-[31%] flex flex-col items-center justify-center text-center">
         <Image
           src="/logo-light.png"
           alt="Scope360"
           width={1400}
           height={869}
           priority
-          className="w-24 opacity-90 sm:w-28 lg:w-36"
+          className="w-24 opacity-90 sm:w-28 lg:w-32"
         />
-
         {running ? (
-          <>
-            <span
-              key={active}
-              className="animate-rise font-display mt-4 block text-lg leading-tight text-amber-brand sm:text-xl lg:text-2xl"
-            >
-              {active}
-            </span>
-            <span className="mt-2 text-[0.55rem] uppercase tracking-[0.3em] text-ink-200/45">
-              {activeSlot + 1} of {CAPABILITIES.length}
-            </span>
-          </>
-        ) : (
-          <span className="mt-3 text-[0.55rem] uppercase tracking-[0.3em] text-amber-brand/70">
-            360&deg; coverage
+          <span
+            key={CAPABILITIES[activeSlot]}
+            className="animate-rise font-display mt-3 block text-base leading-tight text-amber-brand md:hidden"
+          >
+            {CAPABILITIES[activeSlot]}
           </span>
-        )}
+        ) : null}
+        <span className="mt-2 text-[0.5rem] uppercase tracking-[0.28em] text-amber-brand/60 sm:text-[0.55rem]">
+          {running ? `${activeSlot + 1} of ${CAPABILITIES.length}` : "360° coverage"}
+        </span>
       </div>
-
-      {/* Always present for assistive tech and non-JavaScript readers. */}
-      <ul className="sr-only">
-        {CAPABILITIES.map((capability) => (
-          <li key={capability}>{capability}</li>
-        ))}
-      </ul>
     </div>
   );
 }
@@ -127,24 +167,24 @@ function Instrument({
           <stop offset="100%" stopColor="#ffd47a" stopOpacity="0.35" />
         </linearGradient>
         <radialGradient id="orb-core">
-          <stop offset="0%" stopColor="#f5b42a" stopOpacity="0.14" />
+          <stop offset="0%" stopColor="#f5b42a" stopOpacity="0.16" />
           <stop offset="100%" stopColor="#f5b42a" stopOpacity="0" />
         </radialGradient>
       </defs>
 
-      <circle cx="200" cy="200" r="118" fill="url(#orb-core)" />
-      <circle cx="200" cy="200" r="194" stroke="url(#orb-ring)" strokeWidth="1.3" />
-      <circle cx="200" cy="200" r="158" stroke="#f5b42a" strokeOpacity="0.16" strokeWidth="1" strokeDasharray="2 9" />
-      <circle cx="200" cy="200" r="120" stroke="#f5efe6" strokeOpacity="0.08" strokeWidth="1" />
+      {/* The rim sits inside the label ring, so labels clear it. */}
+      <circle cx="200" cy="200" r="96" fill="url(#orb-core)" />
+      <circle cx="200" cy="200" r="140" stroke="url(#orb-ring)" strokeWidth="1.3" />
+      <circle cx="200" cy="200" r="114" stroke="#f5b42a" strokeOpacity="0.16" strokeWidth="1" strokeDasharray="2 9" />
+      <circle cx="200" cy="200" r="86" stroke="#f5efe6" strokeOpacity="0.08" strokeWidth="1" />
 
-      {/* Fine graduations. */}
       {ticks.map((angle) => (
         <line
           key={angle}
           x1="200"
-          y1="8"
+          y1="60"
           x2="200"
-          y2={angle % 30 === 0 ? 24 : 14}
+          y2={angle % 30 === 0 ? 74 : 66}
           stroke="#f5b42a"
           strokeOpacity={angle % 30 === 0 ? 0.5 : 0.18}
           strokeWidth={angle % 30 === 0 ? 1.5 : 1}
@@ -157,10 +197,10 @@ function Instrument({
         <circle
           key={angle}
           cx="200"
-          cy="34"
+          cy="140"
           r={running && i === activeSlot ? 5 : 2.5}
           fill={running && i === activeSlot ? "#ffd47a" : "#f5b42a"}
-          fillOpacity={running && i === activeSlot ? 1 : 0.28}
+          fillOpacity={running && i === activeSlot ? 1 : 0.3}
           transform={`rotate(${angle} 200 200)`}
           style={{ transition: "r 500ms ease, fill-opacity 500ms ease" }}
         />
@@ -175,8 +215,8 @@ function Instrument({
             transition: "transform 1000ms cubic-bezier(0.22, 1, 0.36, 1)",
           }}
         >
-          <line x1="200" y1="52" x2="200" y2="118" stroke="#f5b42a" strokeOpacity="0.55" strokeWidth="1.5" />
-          <circle cx="200" cy="34" r="9" fill="none" stroke="#ffd47a" strokeOpacity="0.9" strokeWidth="1.5" />
+          <line x1="200" y1="96" x2="200" y2="140" stroke="#f5b42a" strokeOpacity="0.6" strokeWidth="1.5" />
+          <circle cx="200" cy="140" r="9" fill="none" stroke="#ffd47a" strokeOpacity="0.9" strokeWidth="1.5" />
         </g>
       ) : null}
     </svg>
