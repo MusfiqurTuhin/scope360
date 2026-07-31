@@ -13,89 +13,89 @@ export const company = {
   support:
     "We plan it, build it, run it, and look after it — with one team answerable for the whole thing.",
   vision:
-    "To empower global organizations with flawless project delivery and transformative digital experiences, turning complex strategic visions into tangible, high-impact ground realities with unmatched precision.",
+    "To help organisations get big, complicated work done properly — turning plans into something real on the ground, exactly as intended.",
   mission:
-    "To architect, digitize, and operate high-stakes initiatives so our clients can maintain singular focus on their core outcomes. We integrate field operations with data-driven technology to deliver scalable results.",
+    "To plan, build and run demanding work so our clients can get on with their own. We put experienced people on site and back them with clear reporting.",
   about: [
-    "Scope360 is a premier, full-service execution partner dedicated to delivering end-to-end physical, digital, and operational solutions. We orchestrate complex initiatives from initial concept to long-term operational viability.",
-    "By bridging the gap between rigorous field experience, robust supply chains, and advanced technology, we ensure seamless delivery at every touchpoint.",
+    "Scope360 takes on complicated work from the first idea through to running it for years — the building side, the technology side, and the day-to-day operations.",
+    "We bring together hands-on site experience, dependable suppliers, and good technology, so the whole job holds together.",
   ],
   voice: "Clear. Confident. Technical. Premium.",
 } as const;
 
 export const pillars: Pillar[] = [
   {
-    slug: "physical-infrastructure",
+    slug: "on-the-ground",
     index: "01",
-    name: "Physical Infrastructure 360°",
+    name: "On the Ground 360°",
     lede: "Everything that has to be built, fitted out, or staffed on the ground — done properly, and done on time.",
     outcome: "Nothing falls through the gap between one contractor and the next.",
     services: [
       {
         title: "Civil Works",
-        body: "Turnkey facility refurbishment, civil construction, and site renovation.",
+        body: "Refurbishing buildings, construction work, and site renovation — finished to a standard you would be happy to hand over.",
       },
       {
         title: "Experiential Events",
-        body: "Custom fabrication, AV and lighting architecture, and spatial planning.",
+        body: "Custom-built stands and sets, sound and lighting, and planning how people move through the space.",
       },
       {
-        title: "Field Mobilization",
-        body: "Rapid deployment of field teams and expert on-site supervision.",
+        title: "Field Teams",
+        body: "Getting trained people on site quickly, with someone experienced supervising them.",
       },
       {
         title: "Site Management",
-        body: "Venue procurement, permitting, and holistic safety protocols.",
+        body: "Finding and booking venues, getting the permits, and keeping everyone safe on site.",
       },
     ],
   },
   {
-    slug: "digital-transformation",
+    slug: "digital-and-data",
     index: "02",
-    name: "Digital Transformation 360°",
-    lede: "The websites, apps, and screens that make the whole thing easy to run — and easy to see how it is going.",
+    name: "Digital & Data 360°",
+    lede: "The websites, apps and screens that make the whole thing easy to run — and easy to see how it is going.",
     outcome: "You see what is happening while it happens, not weeks later.",
     services: [
       {
-        title: "Digital Ecosystems",
-        body: "Custom web and mobile applications, immersive microsites, and seamless registration platforms.",
+        title: "Websites & Apps",
+        body: "Websites, phone apps, and sign-up pages that are quick to use and hold up when a lot of people arrive at once.",
       },
       {
-        title: "Advanced Analytics",
-        body: "Secure data warehousing, cloud infrastructure, and dynamic visualization dashboards.",
+        title: "Reports & Screens",
+        body: "Somewhere safe to keep your information, and clear screens that show how the work is going.",
       },
       {
-        title: "AI & Automation",
-        body: "Generative content pipelines, machine learning integration, and CRM workflow automation.",
+        title: "Ticketing & Entry",
+        body: "Selling tickets, issuing passes, and scanning people in — including fingerprint and tap-card readers.",
       },
       {
-        title: "Platform Engineering",
-        body: "Portals, internal tooling, APIs, and multi-tenant architecture designed for scale.",
+        title: "Internal Tools",
+        body: "Private sites and back-office tools for your own staff, built so they still work as you grow.",
       },
     ],
   },
   {
-    slug: "managed-services",
+    slug: "running-it",
     index: "03",
-    name: "Managed Services 360°",
+    name: "Running It 360°",
     lede: "The part most people walk away from — buying, maintaining, staffing, and looking after it, year after year.",
     outcome: "It keeps working long after opening day.",
     services: [
       {
-        title: "Strategic Procurement",
-        body: "Vendor panel curation, framework contract negotiation, and robust supply chain management.",
+        title: "Buying & Suppliers",
+        body: "Finding suppliers, agreeing the contracts, and keeping materials arriving when they should.",
       },
       {
-        title: "Asset Lifecycle Management",
-        body: "Equipment leasing, warranty tracking, preventative maintenance, and strict AMC governance.",
+        title: "Equipment & Assets",
+        body: "Renting equipment, tracking warranties, servicing things before they break, and holding maintenance contracts to account.",
       },
       {
-        title: "Enterprise Support",
-        body: "24/7 operational monitoring, back-office outsourcing, and dedicated helpdesk integration.",
+        title: "Round-the-Clock Support",
+        body: "Someone watching over it day and night, back-office help, and a help desk your people can actually call.",
       },
       {
-        title: "Facility & Logistics Operations",
-        body: "Fleet coordination, smart energy monitoring, security tracking, and waste management.",
+        title: "Facility Operations",
+        body: "Vehicles, energy use, security and waste — the everyday running of a place.",
       },
     ],
   },
@@ -103,112 +103,112 @@ export const pillars: Pillar[] = [
 
 export const differentiators = [
   {
-    title: "Unified Accountability",
-    body: "A single, authoritative partner overseeing physical execution, technological integration, and ongoing post-launch operations.",
+    title: "One team to answer to",
+    body: "One partner responsible for the building work, the technology, and the running of it afterwards. Nobody pointing at anybody else.",
   },
   {
-    title: "Ground Expertise",
-    body: "Deep practical knowledge required to successfully navigate complex permitting, local vendor landscapes, and on-site hurdles.",
+    title: "We know the ground",
+    body: "We have dealt with the permits, the local suppliers, and the problems that only turn up once you are actually on site.",
   },
   {
-    title: "Data-Driven Precision",
-    body: "Real-time analytics and M&E frameworks embedded directly into the DNA of every project, ensuring measurable outcomes.",
+    title: "You can see the numbers",
+    body: "Live reporting built into every job, so progress is measured rather than guessed at.",
   },
   {
-    title: "Agile Scalability",
-    body: "Access to vetted, global vendor networks combined with managed outsourcing to scale your operations rapidly and efficiently.",
+    title: "We can scale quickly",
+    body: "A tested network of suppliers we can call on, so the work can grow fast without standards slipping.",
   },
 ];
 
 export const methodology = [
   {
     step: "01",
-    title: "Align",
-    body: "Rapid discovery to define strategic objectives, KPIs, and operational constraints.",
+    title: "Agree",
+    body: "A short piece of work to pin down what you want, how it will be measured, and what is standing in the way.",
   },
   {
     step: "02",
-    title: "Architect",
-    body: "Modular project blueprints, dynamic timelines, and proactive risk mitigation strategies.",
+    title: "Plan",
+    body: "A clear plan with dates, who does what, and where the risks are — before anything starts.",
   },
   {
     step: "03",
-    title: "Execute",
-    body: "Deployment of certified vendors managed via real-time operational dashboards.",
+    title: "Build",
+    body: "Approved suppliers doing the work, tracked so you can see progress while it happens.",
   },
   {
     step: "04",
-    title: "Optimize & Sustain",
-    body: "Continuous monitoring, handover processes, and capacity building for long-term viability.",
+    title: "Keep it running",
+    body: "Watching how it performs, handing it over properly, and training your people to run it themselves.",
   },
 ];
 
 export const engagements = [
   {
     sector: "Public Sector",
-    body: "Orchestrating citywide awareness campaigns, large-scale roadshows, and nationwide exhibitions.",
+    body: "Citywide campaigns, roadshows around the country, and national exhibitions.",
     tags: ["Campaign delivery", "Permitting", "Multi-city logistics"],
   },
   {
     sector: "Corporate & Enterprise",
-    body: "Delivering premium corporate office fit-outs, facility upgrades, and global hybrid conferences.",
+    body: "Office fit-outs, building upgrades, and conferences that run in the room and online at the same time.",
     tags: ["Fit-out", "Facility upgrade", "Hybrid events"],
   },
   {
-    sector: "Technology Ecosystems",
-    body: "Deployment of enterprise ticketing platforms seamlessly integrated with biometric and NFC hardware.",
-    tags: ["Ticketing platforms", "Biometrics", "NFC integration"],
+    sector: "Venues & Ticketing",
+    body: "Ticketing and entry systems for large venues, including fingerprint and tap-card readers.",
+    tags: ["Ticketing", "Fingerprint entry", "Tap cards"],
   },
 ];
 
 export const capabilityStack = [
   {
-    group: "Field & Site Operations",
+    group: "On Site",
     items: [
-      "Field team mobilization and supervision",
+      "Getting people on site and supervising them",
       "Venue procurement and permitting",
-      "HSE and safety protocol enforcement",
-      "Multi-site programme coordination",
+      "Health and safety on site",
+      "Running several sites at once",
     ],
   },
   {
-    group: "Build & Fabrication",
+    group: "Building & Making",
     items: [
-      "Civil construction and refurbishment",
-      "Custom fabrication and joinery",
-      "AV, lighting, and rigging architecture",
-      "Spatial planning and site layout",
+      "Construction and refurbishment",
+      "Custom building and joinery",
+      "Sound, lighting and rigging",
+      "Planning the layout of a space",
     ],
   },
   {
-    group: "Procurement & Logistics",
+    group: "Buying & Moving",
     items: [
-      "Vendor panel curation and contracting",
-      "Supply chain and freight coordination",
-      "Equipment leasing and asset tracking",
-      "Fleet, security, and waste management",
+      "Choosing suppliers and agreeing contracts",
+      "Getting materials where they need to be",
+      "Renting equipment and keeping track of it",
+      "Vehicles, security and waste",
     ],
   },
   {
-    group: "Digital, Data & Support",
+    group: "Digital & Support",
     items: [
-      "Registration, ticketing and access platforms",
-      "Operational dashboards and M&E reporting",
-      "Workflow automation and integrations",
+      "Sign-up, ticketing and entry systems",
+      "Progress reports and live screens",
+      "Joining up the systems you already use",
       "24/7 monitoring and helpdesk",
     ],
   },
 ];
 
 export const governance = {
-  headline: "Governance & Compliance",
-  body: "Scope360 operates with an uncompromising, compliance-first approach. Comprehensive permitting, rigorous vendor contracts, standardized safety frameworks, and exhaustive documentation are mandatory components of every engagement.",
-  note: "Formal trade licenses, local registrations, and compliance certifications are maintained rigorously and available upon request.",
+  headline: "Permits, Safety & Paperwork",
+  body: "We do not cut corners on the paperwork. Permits, written supplier contracts, the same safety rules on every site, and a full record of what was done — these are part of every job, not extras.",
+  note: "Trade licences, local registrations and safety certificates are all kept current, and we will show them to you on request.",
   pillars: [
-    "Permitting & regulatory clearance",
-    "Vendor contracting & framework agreements",
-    "Standardized HSE and safety frameworks",
-    "Full documentation and audit trail",
+    "Permits and legal clearance",
+    "Written supplier contracts",
+    "The same safety rules on every site",
+    "A full record of what was done",
   ],
 };
 

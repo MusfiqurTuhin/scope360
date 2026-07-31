@@ -18,21 +18,21 @@ import { useEffect, useState } from "react";
 
 const CAPABILITIES = [
   // Ordered so each pillar owns a contiguous 120° arc of the dial.
-  // Managed Services — from the top.
+  // Running It — from the top.
   "Facility Operations", // 0° — top
-  "Enterprise Support",
-  "Asset Lifecycle",
-  "Strategic Procurement",
-  // Physical Infrastructure — through the bottom.
+  "Round-the-Clock Support",
+  "Equipment & Assets",
+  "Buying & Suppliers",
+  // On the Ground — through the bottom.
   "Civil Works",
   "Site Management",
   "Experiential Events", // 180° — bottom
-  "Field Mobilization",
-  // Digital Transformation — back up the left.
-  "Digital Ecosystems",
-  "Advanced Analytics",
-  "AI & Automation",
-  "Platform Engineering",
+  "Field Teams",
+  // Digital & Data — back up the left.
+  "Websites & Apps",
+  "Reports & Screens",
+  "Ticketing & Entry",
+  "Internal Tools",
 ];
 
 const STEP_DEGREES = 360 / CAPABILITIES.length; // 30°

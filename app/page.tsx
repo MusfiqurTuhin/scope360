@@ -92,7 +92,7 @@ function Hero() {
               <dl className="mt-8 grid grid-cols-2 gap-x-8 gap-y-4 border-t border-white/10 pt-5 sm:grid-cols-4">
                 {[
                   { v: "360\u00b0", l: "Scope under one contract" },
-                  { v: "03", l: "Integrated delivery pillars" },
+                  { v: "03", l: "Sides to the work, one partner" },
                   { v: "24/7", l: "Monitoring and helpdesk" },
                   { v: "M&E", l: "Analytics in every project" },
                 ].map((stat) => (

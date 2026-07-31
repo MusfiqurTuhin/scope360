@@ -6,33 +6,33 @@ import { company, differentiators, pillars } from "@/lib/content";
 export const metadata: Metadata = {
   title: "About",
   description:
-    "Scope360 is a premier, full-service execution partner delivering end-to-end physical, digital, and operational solutions.",
+    "Scope360 takes on complicated work from the first idea through to running it — the building side, the digital side, and the day-to-day operations.",
 };
 
 const capabilities = [
   {
     title: "Field operations",
-    body: "Mobilization, on-site supervision, permitting, safety frameworks, and logistics.",
+    body: "Getting people on site, supervising them, permits, safety, and moving things about.",
   },
   {
     title: "Programme & delivery",
-    body: "Project organization, milestone control, vendor coordination, and risk management.",
+    body: "Keeping the job organised, hitting dates, managing suppliers, and spotting risks early.",
   },
   {
     title: "Procurement & supply chain",
-    body: "Vendor panels, framework contracts, freight coordination, and asset governance.",
+    body: "Choosing suppliers, agreeing contracts, moving materials, and keeping track of equipment.",
   },
   {
     title: "Build & fabrication",
-    body: "Civil works, custom fabrication, AV and lighting architecture, and spatial planning.",
+    body: "Construction, custom building, sound and lighting, and planning the layout of a space.",
   },
   {
     title: "Digital & data",
-    body: "Registration platforms, operational dashboards, automation, and M&E reporting.",
+    body: "Sign-up pages, live progress screens, and clear reporting.",
   },
   {
     title: "Client operations & QA",
-    body: "Documentation, reporting cadence, stakeholder management, and pre-handover verification.",
+    body: "Keeping records, reporting on a regular rhythm, keeping everyone informed, and checking the work before handover.",
   },
 ];
 
@@ -114,8 +114,8 @@ export default function AboutPage() {
               {company.tagline}
             </h2>
             <p className="mt-3 max-w-xl text-sm text-ink-200/65">
-              {pillars.length} integrated pillars. One contract. One accountable
-              partner.
+              {pillars.length} sides to the work. One contract. One partner who answers
+              for it.
             </p>
           </div>
           <ButtonLink href="/contact">Talk to us</ButtonLink>

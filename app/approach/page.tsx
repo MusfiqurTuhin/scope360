@@ -11,7 +11,7 @@ import {
 export const metadata: Metadata = {
   title: "Approach",
   description:
-    "Align, Architect, Execute, Optimize — Scope360's four-stage delivery methodology, engagement models, and compliance-first governance.",
+    "Agree, Plan, Build, Keep it running — the four steps Scope360 follows on every job, the ways we work together, and how we handle permits and safety.",
 };
 
 export default function ApproachPage() {
@@ -19,7 +19,7 @@ export default function ApproachPage() {
     <>
       <PageHero
         eyebrow="Approach"
-        title="Align. Architect. Execute. Optimize."
+        title="Agree. Plan. Build. Keep it running."
         lede="The same four steps every time, so you always know what is happening, what it costs, and what is coming next."
       />
 

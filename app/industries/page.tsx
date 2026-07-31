@@ -6,33 +6,33 @@ import { engagements, pillars } from "@/lib/content";
 export const metadata: Metadata = {
   title: "Industries",
   description:
-    "Representative Scope360 engagements across public sector, corporate and enterprise, and technology ecosystems.",
+    "The kind of work Scope360 takes on for government, for large companies, and for venues.",
 };
 
 const applications = [
   {
     title: "Citywide campaigns & exhibitions",
-    body: "Multi-site mobilization, permitting, fabrication, and on-ground supervision run against a single programme plan.",
+    body: "Getting people and materials to several sites, permits, custom building, and supervision on the ground — all to one plan.",
   },
   {
     title: "Office fit-outs & facility upgrades",
-    body: "Civil works, AV and lighting architecture, and phased handover with minimal operational downtime.",
+    body: "Construction, sound and lighting, and handing the space back in stages so you can keep working.",
   },
   {
     title: "Hybrid & global conferences",
-    body: "Spatial planning, registration platforms, and live analytics unified across physical and digital attendance.",
+    body: "Planning the space, sign-up pages, and live numbers covering people in the room and people watching online.",
   },
   {
-    title: "Ticketing & access ecosystems",
-    body: "Enterprise ticketing integrated with biometric and NFC hardware, deployed and supported end to end.",
+    title: "Ticketing & entry",
+    body: "Ticketing joined up with fingerprint readers and tap cards, installed and supported by us.",
   },
   {
-    title: "Operational dashboards & M&E",
-    body: "Warehoused data, visualization layers, and monitoring frameworks embedded from day one of delivery.",
+    title: "Live progress screens",
+    body: "Your information kept safely in one place, with clear screens showing how the work is going from day one.",
   },
   {
     title: "Managed facility operations",
-    body: "Fleet coordination, smart energy monitoring, security tracking, and waste management under SLA.",
+    body: "Vehicles, energy use, security and waste, with agreed response times.",
   },
 ];
 

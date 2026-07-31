@@ -6,7 +6,7 @@ import { capabilityStack, pillars } from "@/lib/content";
 export const metadata: Metadata = {
   title: "Capabilities",
   description:
-    "Three integrated 360° pillars: physical infrastructure, digital transformation, and managed services — delivered under unified accountability.",
+    "Three sides to the work: what gets built on the ground, the digital side, and keeping it running afterwards — all under one partner.",
 };
 
 export default function CapabilitiesPage() {

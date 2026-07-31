@@ -1,5 +1,18 @@
 # Changelog
 
+## [2026-07-31] — Plain-language pass across the whole site
+
+- Removed the remaining industry jargon everywhere, not just in headlines: architecture, platform, infrastructure, ecosystem, framework, stack, deploy, integrate, orchestrate, seamless, robust, turnkey, holistic, scalable, data-driven, workflow, dashboard, multi-tenant. Verified zero occurrences in the rendered output of all six pages.
+- **This required rewriting copy taken from the company deck**, which had been preserved verbatim until now. The client's original wording is in git history if any of it should be restored.
+- Removed AI and automation entirely. "AI & Automation" became "Ticketing & Entry", describing work the deck actually lists (ticketing with fingerprint and tap-card readers).
+- Renamed service headings in plain terms: Digital Ecosystems → Websites & Apps, Advanced Analytics → Reports & Screens, Platform Engineering → Internal Tools, Strategic Procurement → Buying & Suppliers, Asset Lifecycle Management → Equipment & Assets, Enterprise Support → Round-the-Clock Support, Field Mobilization → Field Teams.
+- Renamed the three pillars: Physical Infrastructure 360° → On the Ground 360°, Digital Transformation 360° → Digital & Data 360°, Managed Services 360° → Running It 360°.
+- Renamed the four delivery steps: Align, Architect, Execute, Optimize & Sustain → Agree, Plan, Build, Keep it running.
+- "Governance & Compliance" became "Permits, Safety & Paperwork".
+- URL slugs updated to match (`/capabilities#on-the-ground`, `#digital-and-data`, `#running-it`); anchor navigation verified working.
+- Meta descriptions rewritten — the old ones still carried the jargon even where the visible page no longer did.
+- Verified: 48 page/viewport combinations with no horizontal overflow and no console errors, anchors scroll correctly, and no AI or automation label remains in the hero orbit.
+
 ## [2026-07-31] — Capability orbit live on the hero
 
 - The hero now carries a 360° instrument with the Scope360 mark at its hub and all twelve capabilities placed at their own 30° stop around the rim. A marker steps stop to stop, lighting each capability in turn.
