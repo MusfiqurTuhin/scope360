@@ -3,11 +3,10 @@ import { Eyebrow, Section, SectionHeading } from "@/components/ui";
 import {
   CursorSpotlight,
   MagneticButton,
-  Marquee,
   SpotlightCard,
 } from "@/components/effects";
 import { Reveal, ScrambleText, Stagger } from "@/components/motion";
-import { HeroScope } from "@/components/hero-scope";
+import { CapabilityOrbit } from "@/components/capability-orbit";
 import {
   company,
   differentiators,
@@ -17,25 +16,11 @@ import {
   pillars,
 } from "@/lib/content";
 
-const marqueeItems = [
-  "Civil Works",
-  "Experiential Events",
-  "Field Mobilization",
-  "Digital Ecosystems",
-  "Advanced Analytics",
-  "AI & Automation",
-  "Strategic Procurement",
-  "Asset Lifecycle",
-  "Enterprise Support",
-  "Facility Operations",
-];
-
 export default function HomePage() {
   return (
     <>
       <CursorSpotlight />
       <Hero />
-      <Marquee items={marqueeItems} />
       <PillarsSection />
       <DifferentiatorsSection />
       <MethodSection />
@@ -63,7 +48,7 @@ function Hero() {
       <div aria-hidden className="grain pointer-events-none absolute inset-0 opacity-40" />
 
       <div className="container-page relative py-[clamp(1.75rem,4.5vh,4.5rem)]">
-        <div className="relative z-10 grid items-center gap-10 lg:grid-cols-[1.15fr_0.85fr] lg:gap-12">
+        <div className="relative z-10 grid items-center gap-10 lg:grid-cols-[1.05fr_0.95fr] lg:gap-12">
           <div>
             <div className="animate-rise">
               <Eyebrow>
@@ -100,9 +85,31 @@ function Hero() {
                 </MagneticButton>
               </div>
             </Reveal>
+
+            {/* Part of the hero, so it animates on load. A scroll reveal never
+                fires here: the row sits exactly on the fold. */}
+            <div className="animate-rise" style={{ animationDelay: "880ms" }}>
+              <dl className="mt-8 grid grid-cols-2 gap-x-8 gap-y-4 border-t border-white/10 pt-5 sm:grid-cols-4">
+                {[
+                  { v: "360\u00b0", l: "Scope under one contract" },
+                  { v: "03", l: "Integrated delivery pillars" },
+                  { v: "24/7", l: "Monitoring and helpdesk" },
+                  { v: "M&E", l: "Analytics in every project" },
+                ].map((stat) => (
+                  <div key={stat.v}>
+                    <dt className="font-display text-xl text-amber-brand md:text-2xl">
+                      {stat.v}
+                    </dt>
+                    <dd className="mt-1 text-xs leading-snug text-ink-200/60">
+                      {stat.l}
+                    </dd>
+                  </div>
+                ))}
+              </dl>
+            </div>
           </div>
 
-          <HeroScope />
+          <CapabilityOrbit />
         </div>
       </div>
     </section>

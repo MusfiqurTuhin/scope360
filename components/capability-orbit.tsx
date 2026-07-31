@@ -36,7 +36,7 @@ const CAPABILITIES = [
 ];
 
 const STEP_DEGREES = 360 / CAPABILITIES.length; // 30°
-const DWELL_MS = 2600;
+const DWELL_MS = 1400;
 
 /** Radius of the label ring, as a percentage of the box. */
 const LABEL_RADIUS = 44;
@@ -116,7 +116,7 @@ export function CapabilityOrbit() {
               top,
               transform: translate,
               opacity: isActive ? 1 : 0.3,
-              transition: "opacity 600ms ease, color 600ms ease",
+              transition: "opacity 380ms ease, color 380ms ease",
             }}
           >
             {capability}
@@ -206,7 +206,7 @@ function Instrument({
           fill={running && i === activeSlot ? "#ffd47a" : "#f5b42a"}
           fillOpacity={running && i === activeSlot ? 1 : 0.3}
           transform={`rotate(${angle} 200 200)`}
-          style={{ transition: "r 500ms ease, fill-opacity 500ms ease" }}
+          style={{ transition: "r 320ms ease, fill-opacity 320ms ease" }}
         />
       ))}
 
@@ -216,7 +216,7 @@ function Instrument({
           style={{
             transform: `rotate(${rotation}deg)`,
             transformOrigin: "200px 200px",
-            transition: "transform 1000ms cubic-bezier(0.22, 1, 0.36, 1)",
+            transition: "transform 620ms cubic-bezier(0.22, 1, 0.36, 1)",
           }}
         >
           <line x1="200" y1="96" x2="200" y2="140" stroke="#f5b42a" strokeOpacity="0.6" strokeWidth="1.5" />

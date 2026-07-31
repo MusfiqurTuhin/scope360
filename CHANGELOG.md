@@ -1,5 +1,15 @@
 # Changelog
 
+## [2026-07-31] — Capability orbit live on the hero
+
+- The hero now carries a 360° instrument with the Scope360 mark at its hub and all twelve capabilities placed at their own 30° stop around the rim. A marker steps stop to stop, lighting each capability in turn.
+- Ordered so each pillar owns a contiguous 120° arc: Managed Services from the top (Facility Operations at 0°), Physical Infrastructure through the bottom (Experiential Events at 180°), Digital Transformation back up the left.
+- Sped the cycle up: dwell 2600ms → 1400ms, marker travel 1000ms → 620ms, label crossfade 600ms → 380ms.
+- Removed the capability marquee beneath the hero — it listed the same twelve items the orbit now shows.
+- Key figures (360°, 03, 24/7, M&E) moved to a row beneath the buttons. It animates on load rather than on scroll, because the row sits exactly on the fold and a scroll reveal never fired there — it was rendering at opacity 0 on a 1470x790 screen.
+- Instrument width is capped per breakpoint from the space its column actually has; below `md` the rim labels are hidden and the hub names the active capability, since twelve labels cannot fit round a circle on a phone.
+- Verified: 60 page/viewport combinations from 360x740 to 2560x1440 with zero horizontal overflow, zero clipped labels, both hero CTAs above the fold, and no console errors. Static under `prefers-reduced-motion`; all twelve capabilities present with JavaScript disabled.
+
 ## [2026-07-31] — Hero figures moved into the scope dial
 
 - Removed the opaque statistics panel that sat over the dial and hid it. The four figures now cycle **inside** the instrument, one at a time, every 3.5 seconds — the dial carries the content instead of being covered by it.
