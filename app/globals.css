@@ -35,6 +35,34 @@
   --animate-scope-drift: scope-spin-reverse 120s linear infinite;
   --animate-scope-orbit: scope-spin 7s linear infinite;
   --animate-scope-pulse: scope-pulse 4.5s ease-in-out infinite;
+  --animate-corner-sweep: corner-sweep 9s linear infinite;
+  --animate-corner-breathe: corner-breathe 6s ease-in-out infinite;
+  --animate-print-drift: print-drift 70s linear infinite;
+  --animate-scanline: scanline 6.5s cubic-bezier(0.5, 0, 0.5, 1) infinite;
+}
+
+/* Sweep arm pivoting through the visible quarter from the corner. */
+@keyframes corner-sweep {
+  0% { transform: rotate(0deg); }
+  50% { transform: rotate(90deg); }
+  100% { transform: rotate(0deg); }
+}
+
+@keyframes corner-breathe {
+  0%, 100% { opacity: 0.55; }
+  50% { opacity: 1; }
+}
+
+@keyframes print-drift {
+  from { transform: translate(-50%, -50%) rotate(0deg); }
+  to { transform: translate(-50%, -50%) rotate(360deg); }
+}
+
+@keyframes scanline {
+  0% { top: -12%; opacity: 0; }
+  8% { opacity: 1; }
+  92% { opacity: 1; }
+  100% { top: 105%; opacity: 0; }
 }
 
 @keyframes scope-spin {
