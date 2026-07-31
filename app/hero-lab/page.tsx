@@ -27,9 +27,9 @@ function HeroCapabilityOrbit() {
   ];
   return (
     <section className="relative overflow-hidden">
-      <CapabilityOrbit />
       <div className="container-page relative z-10 py-[clamp(1.75rem,4.5vh,4.5rem)]">
-        <div className="max-w-2xl">
+        <div className="grid items-center gap-10 lg:grid-cols-[1.05fr_0.95fr] lg:gap-12">
+        <div>
           <div className="animate-rise">
             <Eyebrow>
               <ScrambleText text={company.tagline} />
@@ -62,6 +62,8 @@ function HeroCapabilityOrbit() {
               </MagneticButton>
             </div>
           </Reveal>
+        </div>
+        <CapabilityOrbit />
         </div>
       </div>
     </section>

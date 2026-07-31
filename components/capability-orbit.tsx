@@ -1,18 +1,21 @@
 "use client";
 
+import Image from "next/image";
 import { useEffect, useState } from "react";
 
 /**
- * A 360° ring carrying every capability. The ring steps round one position at a
- * time, bringing each capability to the reading point in turn — the circle does
- * what the brand name says: covers the whole 360, one discipline at a time.
+ * A 360° instrument with the Scope360 mark at its hub.
  *
- * The ring is centred just beyond the right edge, so only its left arc crosses
- * the hero. Capabilities rotate up into that arc, hold at the reading point,
- * then travel on.
+ * A marker steps 30° round the rim every few seconds — one stop per capability,
+ * twelve stops to a full revolution — and the capability at that stop is named
+ * in the hub beneath the logo. The brand sits at the centre of everything the
+ * company covers, which is the point the name is making.
  *
- * Every capability stays in the DOM at all times, so the content is complete for
- * screen readers, crawlers, and anyone without JavaScript.
+ * Naming in the hub rather than on the rim keeps every label horizontal and
+ * readable, and means nothing can collide with the headline or clip off-screen.
+ *
+ * All capabilities stay in the DOM, so the content is complete for screen
+ * readers, crawlers, and anyone without JavaScript.
  */
 
 const CAPABILITIES = [
@@ -30,10 +33,8 @@ const CAPABILITIES = [
   "Facility Operations",
 ];
 
-/** 12 capabilities around a full circle — one every 30 degrees. */
-const STEP_DEGREES = 360 / CAPABILITIES.length;
-const READING_ANGLE = 180; // due left, facing the headline
-const DWELL_MS = 2400;
+const STEP_DEGREES = 360 / CAPABILITIES.length; // 30°
+const DWELL_MS = 2600;
 
 export function CapabilityOrbit() {
   const [index, setIndex] = useState(0);
@@ -51,127 +52,133 @@ export function CapabilityOrbit() {
     return () => window.clearInterval(id);
   }, [running, paused]);
 
-  // The index keeps increasing rather than wrapping, so the ring never spins
-  // backwards to get from the last capability to the first.
-  const ringRotation = READING_ANGLE - index * STEP_DEGREES;
+  // Keeps increasing rather than wrapping, so the marker never spins backwards
+  // to get from the twelfth capability to the first.
+  const markerRotation = index * STEP_DEGREES;
   const activeSlot = index % CAPABILITIES.length;
-
-  if (!running) {
-    // Reduced motion, or before hydration: a plain readable list.
-    return (
-      <ul className="grid grid-cols-2 gap-x-6 gap-y-2 text-sm text-ink-200/65">
-        {CAPABILITIES.map((capability) => (
-          <li key={capability} className="flex items-center gap-2">
-            <span aria-hidden className="h-1 w-1 shrink-0 rounded-full bg-amber-brand" />
-            {capability}
-          </li>
-        ))}
-      </ul>
-    );
-  }
+  const active = CAPABILITIES[activeSlot] ?? CAPABILITIES[0];
 
   return (
     <div
-      aria-label="Capabilities"
-      className="pointer-events-auto absolute inset-y-0 right-0 w-full overflow-hidden"
+      className="relative mx-auto aspect-square w-full max-w-[20rem] sm:max-w-[24rem] lg:max-w-[min(30rem,52vh)]"
       onMouseEnter={() => setPaused(true)}
       onMouseLeave={() => setPaused(false)}
     >
-      {/* Ring graphics, centred on the same point as the labels. */}
-      <div className="absolute right-[-11rem] top-1/2 h-0 w-0 sm:right-[-9rem] lg:right-[-8rem]">
-        <RingGraphics rotation={ringRotation} />
+      <Instrument rotation={markerRotation} activeSlot={activeSlot} running={running} />
 
-        {/* The reading point: a bracket the active capability arrives at. */}
-        <span
-          aria-hidden
-          className="absolute top-0 hidden h-9 w-px -translate-y-1/2 bg-linear-to-b from-transparent via-amber-brand to-transparent lg:block lg:[--r:23rem] xl:[--r:25rem]"
-          style={{ left: "calc(var(--r) * -1)" }}
+      {/* Hub: the mark, and the capability currently under the marker. */}
+      <div className="absolute inset-[19%] flex flex-col items-center justify-center text-center">
+        <Image
+          src="/logo-light.png"
+          alt="Scope360"
+          width={1400}
+          height={869}
+          priority
+          className="w-24 opacity-90 sm:w-28 lg:w-36"
         />
 
-        <div
-          className="absolute left-0 top-0 hidden h-0 w-0 transition-transform duration-[1100ms] ease-[cubic-bezier(0.22,1,0.36,1)] lg:block lg:[--r:23rem] xl:[--r:25rem]"
-          style={{ transform: `rotate(${ringRotation}deg)` }}
-        >
-          {CAPABILITIES.map((capability, i) => {
-            const slotAngle = i * STEP_DEGREES;
-            const isActive = i === activeSlot;
-            return (
-              <div
-                key={capability}
-                className="absolute left-0 top-0 h-0 w-0"
-                style={{ transform: `rotate(${slotAngle}deg) translateX(var(--r))` }}
-              >
-                <span
-                  aria-current={isActive ? "true" : undefined}
-                  className={`block w-72 whitespace-nowrap pr-4 text-right ${
-                    isActive
-                      ? "font-display text-2xl text-amber-brand opacity-100 sm:text-3xl lg:text-4xl"
-                      : "text-[0.65rem] uppercase tracking-[0.18em] text-ink-200 opacity-20 sm:text-xs"
-                  }`}
-                  style={{
-                    transform: `translate(-100%, -50%) rotate(${-(slotAngle + ringRotation)}deg)`,
-                    transformOrigin: "100% 50%",
-                    // The counter-rotation must animate on exactly the same curve
-                    // as the ring, or the labels tilt while the ring is turning.
-                    transition:
-                      "transform 1100ms cubic-bezier(0.22,1,0.36,1), opacity 700ms ease, color 700ms ease",
-                  }}
-                >
-                  {capability}
-                </span>
-              </div>
-            );
-          })}
-        </div>
+        {running ? (
+          <>
+            <span
+              key={active}
+              className="animate-rise font-display mt-4 block text-lg leading-tight text-amber-brand sm:text-xl lg:text-2xl"
+            >
+              {active}
+            </span>
+            <span className="mt-2 text-[0.55rem] uppercase tracking-[0.3em] text-ink-200/45">
+              {activeSlot + 1} of {CAPABILITIES.length}
+            </span>
+          </>
+        ) : (
+          <span className="mt-3 text-[0.55rem] uppercase tracking-[0.3em] text-amber-brand/70">
+            360&deg; coverage
+          </span>
+        )}
       </div>
+
+      {/* Always present for assistive tech and non-JavaScript readers. */}
+      <ul className="sr-only">
+        {CAPABILITIES.map((capability) => (
+          <li key={capability}>{capability}</li>
+        ))}
+      </ul>
     </div>
   );
 }
 
-/** Concentric rings and a tick every 30° — one tick per capability slot. */
-function RingGraphics({ rotation }: { rotation: number }) {
+function Instrument({
+  rotation,
+  activeSlot,
+  running,
+}: {
+  rotation: number;
+  activeSlot: number;
+  running: boolean;
+}) {
   const ticks = Array.from({ length: 72 }, (_, i) => i * 5);
+  const stops = Array.from({ length: 12 }, (_, i) => i * STEP_DEGREES);
 
   return (
-    <div
-      aria-hidden
-      className="absolute left-1/2 top-1/2 h-[26rem] w-[26rem] -translate-x-1/2 -translate-y-1/2 opacity-50 sm:h-[36rem] sm:w-[36rem] sm:opacity-70 lg:h-[46rem] lg:w-[46rem] lg:opacity-100 xl:h-[50rem] xl:w-[50rem]"
-    >
-      <svg viewBox="0 0 400 400" className="h-full w-full" fill="none">
-        <defs>
-          <linearGradient id="orbit-ring" x1="0" y1="0" x2="1" y2="1">
-            <stop offset="0%" stopColor="#f5b42a" stopOpacity="0.45" />
-            <stop offset="60%" stopColor="#f5b42a" stopOpacity="0.1" />
-            <stop offset="100%" stopColor="#ffd47a" stopOpacity="0.3" />
-          </linearGradient>
-        </defs>
+    <svg viewBox="0 0 400 400" className="absolute inset-0 h-full w-full" fill="none" aria-hidden>
+      <defs>
+        <linearGradient id="orb-ring" x1="0" y1="0" x2="1" y2="1">
+          <stop offset="0%" stopColor="#f5b42a" stopOpacity="0.5" />
+          <stop offset="60%" stopColor="#f5b42a" stopOpacity="0.12" />
+          <stop offset="100%" stopColor="#ffd47a" stopOpacity="0.35" />
+        </linearGradient>
+        <radialGradient id="orb-core">
+          <stop offset="0%" stopColor="#f5b42a" stopOpacity="0.14" />
+          <stop offset="100%" stopColor="#f5b42a" stopOpacity="0" />
+        </radialGradient>
+      </defs>
 
-        <circle cx="200" cy="200" r="196" stroke="url(#orbit-ring)" strokeWidth="1.2" />
-        <circle cx="200" cy="200" r="168" stroke="#f5b42a" strokeOpacity="0.14" strokeWidth="1" strokeDasharray="2 9" />
-        <circle cx="200" cy="200" r="132" stroke="#f5efe6" strokeOpacity="0.06" strokeWidth="1" />
+      <circle cx="200" cy="200" r="118" fill="url(#orb-core)" />
+      <circle cx="200" cy="200" r="194" stroke="url(#orb-ring)" strokeWidth="1.3" />
+      <circle cx="200" cy="200" r="158" stroke="#f5b42a" strokeOpacity="0.16" strokeWidth="1" strokeDasharray="2 9" />
+      <circle cx="200" cy="200" r="120" stroke="#f5efe6" strokeOpacity="0.08" strokeWidth="1" />
 
+      {/* Fine graduations. */}
+      {ticks.map((angle) => (
+        <line
+          key={angle}
+          x1="200"
+          y1="8"
+          x2="200"
+          y2={angle % 30 === 0 ? 24 : 14}
+          stroke="#f5b42a"
+          strokeOpacity={angle % 30 === 0 ? 0.5 : 0.18}
+          strokeWidth={angle % 30 === 0 ? 1.5 : 1}
+          transform={`rotate(${angle} 200 200)`}
+        />
+      ))}
+
+      {/* One stop per capability; the current one lights up. */}
+      {stops.map((angle, i) => (
+        <circle
+          key={angle}
+          cx="200"
+          cy="34"
+          r={running && i === activeSlot ? 5 : 2.5}
+          fill={running && i === activeSlot ? "#ffd47a" : "#f5b42a"}
+          fillOpacity={running && i === activeSlot ? 1 : 0.28}
+          transform={`rotate(${angle} 200 200)`}
+          style={{ transition: "r 500ms ease, fill-opacity 500ms ease" }}
+        />
+      ))}
+
+      {/* The marker, stepping 30° at a time round the full circle. */}
+      {running ? (
         <g
-          className="transition-transform duration-[1100ms] ease-[cubic-bezier(0.22,1,0.36,1)]"
-          style={{ transform: `rotate(${rotation}deg)`, transformOrigin: "200px 200px" }}
+          style={{
+            transform: `rotate(${rotation}deg)`,
+            transformOrigin: "200px 200px",
+            transition: "transform 1000ms cubic-bezier(0.22, 1, 0.36, 1)",
+          }}
         >
-          {ticks.map((angle) => {
-            const major = angle % 30 === 0;
-            return (
-              <line
-                key={angle}
-                x1="200"
-                y1="4"
-                x2="200"
-                y2={major ? 20 : 11}
-                stroke="#f5b42a"
-                strokeOpacity={major ? 0.6 : 0.22}
-                strokeWidth={major ? 1.6 : 1}
-                transform={`rotate(${angle} 200 200)`}
-              />
-            );
-          })}
+          <line x1="200" y1="52" x2="200" y2="118" stroke="#f5b42a" strokeOpacity="0.55" strokeWidth="1.5" />
+          <circle cx="200" cy="34" r="9" fill="none" stroke="#ffd47a" strokeOpacity="0.9" strokeWidth="1.5" />
         </g>
-      </svg>
-    </div>
+      ) : null}
+    </svg>
   );
 }
